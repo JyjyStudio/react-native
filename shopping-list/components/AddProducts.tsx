@@ -1,13 +1,29 @@
-import { View, TextInput, Pressable, StyleSheet, Text } from 'react-native'
-import React, { useState } from 'react'
+import {
+	View,
+	TextInput,
+	Pressable,
+	StyleSheet,
+	Text,
+	Keyboard,
+	Alert,
+} from 'react-native'
+import React, { useState, useEffect } from 'react'
 
 export default function AddProducts({ submitHandler, reset }: any) {
 	const [product, setProduct] = useState('')
+
+	useEffect(() => {
+		Keyboard.addListener('keyboardDidHide', () =>
+			Alert.alert('✔️', 'Votre produit à bien été ajouté !')
+		)
+		return () => Keyboard.removeAllListeners('keyboardDidHide')
+	}, [])
 
 	const handleClick = () => {
 		if (product.length >= 2) {
 			submitHandler(product)
 			setProduct('')
+			Keyboard.dismiss()
 		}
 	}
 
@@ -18,10 +34,11 @@ export default function AddProducts({ submitHandler, reset }: any) {
 				placeholder="Nouveau produit (2 caracteres min)"
 				value={product}
 				onChangeText={(val) => setProduct(val)}
-				// multiline
 				selectTextOnFocus
-				maxLength={9}
-				secureTextEntry
+				onSubmitEditing={handleClick}
+				// multiline
+				// maxLength={9}
+				// secureTextEntry
 			/>
 			<View style={styles.btns}>
 				<Pressable style={styles.button} onPress={handleClick}>
@@ -53,6 +70,8 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 32,
 		backgroundColor: 'deepskyblue',
 		width: '48%',
+		elevation: 7,
+		borderRadius: 3,
 	},
 	text: {
 		textAlign: 'center',

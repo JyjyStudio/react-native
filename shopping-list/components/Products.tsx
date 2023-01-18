@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
 	productContainer: {
 		flexDirection: 'row',
 		justifyContent: 'space-between',
+		alignItems: 'center',
 		padding: 30,
 		paddingVertical: 50,
 		backgroundColor: 'lightgreen',

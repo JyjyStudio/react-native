@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { StyleSheet, View, FlatList, Alert, StatusBar } from 'react-native'
 import AddProducts from './components/AddProducts'
+import DismissKeyboard from './components/DismissKeyboard'
 import Products from './components/Products'
 
 export default function App() {
@@ -39,30 +40,34 @@ export default function App() {
 			],
 			{ cancelable: true, onDismiss: () => console.warn('Annulé') }
 		)
-	const reset = () => setMyProducts([])
 
 	return (
-		<View style={styles.container}>
-			<AddProducts submitHandler={submitHandler} reset={reset} />
+		<DismissKeyboard>
+			<View style={styles.container}>
+				<AddProducts
+					submitHandler={submitHandler}
+					reset={() => setMyProducts([])}
+				/>
 
-			<FlatList
-				style={styles.items}
-				data={myProducts}
-				renderItem={({ item }) => (
-					<Products product={item} deleteProduct={deleteProduct} />
-				)}
-			/>
-		</View>
+				<FlatList
+					data={myProducts}
+					renderItem={({ item }) => (
+						<Products
+							product={item}
+							deleteProduct={deleteProduct}
+						/>
+					)}
+				/>
+			</View>
+		</DismissKeyboard>
 	)
 }
 
 const styles = StyleSheet.create({
 	container: {
-		paddingHorizontal: 10,
+		flex: 1,
+		paddingHorizontal: 20,
 		paddingTop: StatusBar.currentHeight,
-	},
-	items: {
-		marginBottom: 120,
 	},
 })
 
