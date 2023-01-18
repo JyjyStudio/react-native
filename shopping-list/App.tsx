@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { StyleSheet, View, FlatList, Alert } from 'react-native'
+import { StyleSheet, View, FlatList, Alert, StatusBar } from 'react-native'
 import AddProducts from './components/AddProducts'
 import Products from './components/Products'
 
@@ -39,31 +39,27 @@ export default function App() {
 			],
 			{ cancelable: true, onDismiss: () => console.warn('Annulé') }
 		)
+	const reset = () => setMyProducts([])
 
 	return (
 		<View style={styles.container}>
-			<AddProducts submitHandler={submitHandler} />
-			<View>
-				<FlatList
-					style={styles.items}
-					data={myProducts}
-					renderItem={({ item }) => (
-						<Products
-							product={item}
-							deleteProduct={deleteProduct}
-						/>
-					)}
-				/>
-			</View>
+			<AddProducts submitHandler={submitHandler} reset={reset} />
+
+			<FlatList
+				style={styles.items}
+				data={myProducts}
+				renderItem={({ item }) => (
+					<Products product={item} deleteProduct={deleteProduct} />
+				)}
+			/>
 		</View>
 	)
 }
 
 const styles = StyleSheet.create({
 	container: {
-		padding: 10,
-		paddingTop: 50,
-		// marginBottom: 80,
+		paddingHorizontal: 10,
+		paddingTop: StatusBar.currentHeight,
 	},
 	items: {
 		marginBottom: 120,
