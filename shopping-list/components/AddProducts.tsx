@@ -1,15 +1,19 @@
 import {
 	View,
 	TextInput,
-	Pressable,
 	StyleSheet,
-	Text,
 	Keyboard,
 	Alert,
+	Pressable,
+	Text,
 } from 'react-native'
 import React, { useState, useEffect } from 'react'
 
-export default function AddProducts({ submitHandler, reset }: any) {
+export default function AddProducts({
+	submitHandler,
+	modalVisible,
+	setModalVisible,
+}: Props) {
 	const [product, setProduct] = useState('')
 
 	useEffect(() => {
@@ -24,11 +28,12 @@ export default function AddProducts({ submitHandler, reset }: any) {
 			submitHandler(product)
 			setProduct('')
 			Keyboard.dismiss()
+			setModalVisible(false)
 		}
 	}
 
 	return (
-		<View style={styles.inputContainer}>
+		<View style={styles.container}>
 			<TextInput
 				style={styles.textInput}
 				placeholder="Nouveau produit (2 caracteres min)"
@@ -40,44 +45,60 @@ export default function AddProducts({ submitHandler, reset }: any) {
 				// maxLength={9}
 				// secureTextEntry
 			/>
-			<View style={styles.btns}>
-				<Pressable style={styles.button} onPress={handleClick}>
-					<Text style={styles.text}>Valider</Text>
+			<View style={styles.buttonsContainer}>
+				<Pressable
+					style={[styles.btns, styles.validationBtn]}
+					onPress={handleClick}
+				>
+					<Text style={styles.textBtn}>VALIDER</Text>
 				</Pressable>
-				<Pressable style={styles.button} onPress={reset}>
-					<Text style={styles.text}>Reset</Text>
+				<Pressable
+					style={[styles.btns, styles.closeBtn]}
+					onPress={() => setModalVisible(!modalVisible)}
+				>
+					<Text style={styles.textBtn}>ANNULER</Text>
 				</Pressable>
 			</View>
 		</View>
 	)
 }
 const styles = StyleSheet.create({
-	inputContainer: {
+	container: {
 		marginBottom: 10,
+		width: '100%',
 	},
 	textInput: {
 		borderWidth: 1,
 		padding: 5,
 		paddingLeft: 10,
-		marginBottom: 10,
+		marginBottom: 15,
 	},
-	btns: {
+	buttonsContainer: {
 		flexDirection: 'row',
 		justifyContent: 'space-between',
 	},
-	button: {
+	btns: {
+		borderRadius: 5,
 		paddingVertical: 12,
-		paddingHorizontal: 32,
-		backgroundColor: 'deepskyblue',
-		width: '48%',
-		elevation: 7,
-		borderRadius: 3,
+		elevation: 2,
+		width: '47%',
 	},
-	text: {
-		textAlign: 'center',
-		fontSize: 16,
-		fontWeight: 'bold',
-		letterSpacing: 1,
+	validationBtn: {
+		backgroundColor: 'deepskyblue',
+	},
+	closeBtn: {
+		backgroundColor: 'tomato',
+	},
+	textBtn: {
 		color: 'white',
+		fontWeight: 'bold',
+		textAlign: 'center',
+		fontSize: 15,
 	},
 })
+
+interface Props {
+	modalVisible: boolean
+	setModalVisible: Function
+	submitHandler: Function
+}
