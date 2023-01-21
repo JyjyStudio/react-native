@@ -29,6 +29,8 @@ export default function AddProducts({
 			setProduct('')
 			Keyboard.dismiss()
 			setModalVisible(false)
+		} else {
+			Alert.alert('Info', 'Merci de saisir au moins 2 caractères')
 		}
 	}
 
