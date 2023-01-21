@@ -7,7 +7,7 @@ import {
 	Pressable,
 	Text,
 } from 'react-native'
-import HomeModal from './components/HomeModal'
+import AddProductModal from './components/AddProductModal'
 import DismissKeyboard from './components/DismissKeyboard'
 import Product from './components/Product'
 
@@ -82,7 +82,7 @@ export default function App() {
 						)}
 					/>
 				</View>
-				<HomeModal
+				<AddProductModal
 					submitHandler={submitHandler}
 					modalVisible={modalVisible}
 					setModalVisible={setModalVisible}
