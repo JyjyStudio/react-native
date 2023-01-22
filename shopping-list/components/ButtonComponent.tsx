@@ -5,21 +5,39 @@ import {
 	Text,
 } from 'react-native'
 import React from 'react'
-import { LinearGradient, LinearGradientProps } from 'expo-linear-gradient'
+import { LinearGradient } from 'expo-linear-gradient'
 
 export default function ButtonComponent({
 	title,
 	onPress,
 	style,
-	gradient,
 	colors,
 	start,
 	end,
 }: Props) {
+	const styles = StyleSheet.create({
+		button: {
+			borderRadius: 20,
+			alignItems: 'center',
+			borderWidth: 1,
+			borderColor: 'black',
+			paddingVertical: 10,
+		},
+		buttonText: {
+			fontSize: style.fontSize ? style.fontSize : 14,
+			fontWeight: 'bold',
+			color: style.color ? style.color : 'black',
+		},
+	})
+
 	return (
 		<>
-			{gradient ? (
-				<TouchableOpacity style={style && style} onPress={onPress}>
+			{colors ? (
+				<TouchableOpacity
+					style={style && style}
+					onPress={onPress}
+					activeOpacity={0.8}
+				>
 					<LinearGradient
 						style={[[styles.button]]}
 						colors={colors}
@@ -35,6 +53,7 @@ export default function ButtonComponent({
 				<TouchableOpacity
 					style={[styles.button, style && style]}
 					onPress={onPress}
+					activeOpacity={0.7}
 				>
 					<Text style={styles.buttonText}>{title.toUpperCase()}</Text>
 				</TouchableOpacity>
@@ -42,21 +61,6 @@ export default function ButtonComponent({
 		</>
 	)
 }
-
-const styles = StyleSheet.create({
-	button: {
-		borderRadius: 20,
-		alignItems: 'center',
-		borderWidth: 1,
-		borderColor: 'black',
-		paddingVertical: 10,
-	},
-	buttonText: {
-		fontSize: 17,
-		color: 'white',
-		fontWeight: 'bold',
-	},
-})
 
 type ArrayOfTwoValuesMin<T> = {
 	0: T
@@ -67,7 +71,6 @@ interface Props {
 	title: string
 	onPress: (event: GestureResponderEvent) => void
 	style?: any
-	gradient?: boolean
 	colors?: ArrayOfTwoValuesMin<string> | any
 	start?: { x: number; y: number }
 	end?: { x: number; y: number }

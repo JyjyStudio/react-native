@@ -7,7 +7,8 @@ import {
 	Pressable,
 	Text,
 } from 'react-native'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import ButtonComponent from './ButtonComponent'
 
 export default function AddProducts({
 	submitHandler,
@@ -16,19 +17,13 @@ export default function AddProducts({
 }: Props) {
 	const [product, setProduct] = useState('')
 
-	useEffect(() => {
-		Keyboard.addListener('keyboardDidHide', () =>
-			Alert.alert('✔️', 'Votre produit à bien été ajouté !')
-		)
-		return () => Keyboard.removeAllListeners('keyboardDidHide')
-	}, [])
-
 	const handleClick = () => {
 		if (product.length >= 2) {
 			submitHandler(product)
 			setProduct('')
 			Keyboard.dismiss()
 			setModalVisible(false)
+			Alert.alert('✔️', 'Votre produit à bien été ajouté !')
 		} else {
 			Alert.alert('Info', 'Merci de saisir au moins 2 caractères')
 		}
@@ -48,18 +43,16 @@ export default function AddProducts({
 				// secureTextEntry
 			/>
 			<View style={styles.buttonsContainer}>
-				<Pressable
-					style={[styles.btns, styles.closeBtn]}
+				<ButtonComponent
+					title="annuler"
 					onPress={() => setModalVisible(!modalVisible)}
-				>
-					<Text style={styles.textBtn}>ANNULER</Text>
-				</Pressable>
-				<Pressable
-					style={[styles.btns, styles.validationBtn]}
+					style={{ ...styles.btns, ...styles.closeBtn }}
+				/>
+				<ButtonComponent
+					title="valider"
 					onPress={handleClick}
-				>
-					<Text style={styles.textBtn}>VALIDER</Text>
-				</Pressable>
+					style={{ ...styles.btns, ...styles.validationBtn }}
+				/>
 			</View>
 		</View>
 	)

@@ -67,7 +67,7 @@ export default function App() {
 							<ButtonComponent
 								title="Ajouter un produit"
 								onPress={() => setModalVisible(true)}
-								gradient
+								style={styles.grandientBtn}
 								colors={[
 									'rgb(120, 220, 234)',
 									'rgb(130, 230, 244)',
@@ -76,12 +76,11 @@ export default function App() {
 								]}
 								start={{ x: 0.5, y: 0 }}
 								end={{ x: 0.5, y: 1 }}
-								style={styles.grandientBtn}
 							/>
 							<ButtonComponent
 								title="Ajouter une catégorie"
 								onPress={() => addCategory('test')}
-								gradient
+								style={styles.grandientBtn}
 								colors={[
 									'rgb(162, 224, 146)',
 									'rgb(102, 244, 186)',
@@ -89,7 +88,6 @@ export default function App() {
 								]}
 								start={{ x: 0.5, y: 0 }}
 								end={{ x: 0.5, y: 1 }}
-								style={styles.grandientBtn}
 							/>
 							<ButtonComponent
 								title="reset"
@@ -138,10 +136,14 @@ const styles = StyleSheet.create({
 	},
 	grandientBtn: {
 		width: '100%',
+		fontSize: 17,
+		color: 'white',
 	},
 	resetBtn: {
 		backgroundColor: 'tomato',
 		width: '100%',
+		fontSize: 17,
+		color: 'white',
 	},
 	categoryTitle: {
 		fontWeight: 'bold',
@@ -152,4 +154,3 @@ const styles = StyleSheet.create({
 		marginTop: 10,
 	},
 })
-
