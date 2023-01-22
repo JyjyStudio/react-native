@@ -6,6 +6,7 @@ import {
 } from 'react-native'
 import React from 'react'
 import { LinearGradient } from 'expo-linear-gradient'
+import colorsConstants from '../constants/colors'
 
 export default function ButtonComponent({
 	title,
@@ -17,16 +18,17 @@ export default function ButtonComponent({
 }: Props) {
 	const styles = StyleSheet.create({
 		button: {
-			borderRadius: 20,
+			borderRadius: 8,
 			alignItems: 'center',
 			borderWidth: 1,
-			borderColor: 'black',
+			borderColor: colorsConstants.dark,
 			paddingVertical: 10,
+			elevation: 5,
 		},
 		buttonText: {
 			fontSize: style.fontSize ? style.fontSize : 14,
 			fontWeight: 'bold',
-			color: style.color ? style.color : 'black',
+			color: style.color ? style.color : colorsConstants.dark,
 		},
 	})
 

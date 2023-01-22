@@ -9,6 +9,7 @@ import {
 } from 'react-native'
 import React, { useState } from 'react'
 import ButtonComponent from './ButtonComponent'
+import colors from '../constants/colors'
 
 export default function AddProducts({
 	submitHandler,
@@ -44,14 +45,14 @@ export default function AddProducts({
 			/>
 			<View style={styles.buttonsContainer}>
 				<ButtonComponent
-					title="annuler"
-					onPress={() => setModalVisible(!modalVisible)}
-					style={{ ...styles.btns, ...styles.closeBtn }}
-				/>
-				<ButtonComponent
 					title="valider"
 					onPress={handleClick}
 					style={{ ...styles.btns, ...styles.validationBtn }}
+				/>
+				<ButtonComponent
+					title="annuler"
+					onPress={() => setModalVisible(!modalVisible)}
+					style={{ ...styles.btns, ...styles.closeBtn }}
 				/>
 			</View>
 		</View>
@@ -89,10 +90,10 @@ const styles = StyleSheet.create({
 		width: '47%',
 	},
 	validationBtn: {
-		backgroundColor: 'deepskyblue',
+		backgroundColor: colors.info,
 	},
 	closeBtn: {
-		backgroundColor: 'tomato',
+		backgroundColor: colors.danger,
 	},
 	textBtn: {
 		fontWeight: 'bold',

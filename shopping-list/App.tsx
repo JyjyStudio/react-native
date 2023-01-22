@@ -11,6 +11,8 @@ import AddProductModal from './components/AddProductModal'
 import DismissKeyboard from './components/DismissKeyboard'
 import Product from './components/Product'
 import ButtonComponent from './components/ButtonComponent'
+import Header from './components/Header'
+import colors from './constants/colors'
 
 export default function App() {
 	const [myProducts, setMyProducts] = useState<
@@ -61,58 +63,57 @@ export default function App() {
 				source={require('./assets/Abstract-Gradient-1.png')}
 				style={styles.backgoundImage}
 			>
-				<>
-					<View style={styles.globalContainer}>
-						<View style={styles.addProductContainer}>
-							<ButtonComponent
-								title="Ajouter un produit"
-								onPress={() => setModalVisible(true)}
-								style={styles.grandientBtn}
-								colors={[
-									'rgb(120, 220, 234)',
-									'rgb(130, 230, 244)',
-									'rgb(140, 180, 254)',
-									'rgb(190, 120, 264)',
-								]}
-								start={{ x: 0.5, y: 0 }}
-								end={{ x: 0.5, y: 1 }}
-							/>
-							<ButtonComponent
-								title="Ajouter une catégorie"
-								onPress={() => addCategory('test')}
-								style={styles.grandientBtn}
-								colors={[
-									'rgb(162, 224, 146)',
-									'rgb(102, 244, 186)',
-									'rgb(51, 139, 147)',
-								]}
-								start={{ x: 0.5, y: 0 }}
-								end={{ x: 0.5, y: 1 }}
-							/>
-							<ButtonComponent
-								title="reset"
-								onPress={() => setMyProducts([])}
-								style={styles.resetBtn}
-							/>
-						</View>
-
-						<FlatList
-							style={styles.flatlist}
-							data={myProducts}
-							renderItem={({ item }) => (
-								<Product
-									product={item}
-									deleteProduct={deleteProduct}
-								/>
-							)}
+				<Header />
+				<View style={styles.globalContainer}>
+					<View style={styles.addProductContainer}>
+						<ButtonComponent
+							title="Ajouter un produit"
+							onPress={() => setModalVisible(true)}
+							style={styles.grandientBtn}
+							colors={[
+								'rgb(120, 220, 234)',
+								'rgb(130, 230, 244)',
+								'rgb(140, 180, 254)',
+								'rgb(190, 120, 264)',
+							]}
+							start={{ x: 0.5, y: 0 }}
+							end={{ x: 0.5, y: 1 }}
+						/>
+						<ButtonComponent
+							title="Ajouter une catégorie"
+							onPress={() => addCategory('test')}
+							style={styles.grandientBtn}
+							colors={[
+								'rgb(162, 224, 146)',
+								'rgb(102, 244, 186)',
+								'rgb(51, 139, 147)',
+							]}
+							start={{ x: 0.5, y: 0 }}
+							end={{ x: 0.5, y: 1 }}
+						/>
+						<ButtonComponent
+							title="reset"
+							onPress={() => setMyProducts([])}
+							style={styles.resetBtn}
 						/>
 					</View>
-					<AddProductModal
-						submitHandler={submitHandler}
-						modalVisible={modalVisible}
-						setModalVisible={setModalVisible}
+
+					<FlatList
+						style={styles.flatlist}
+						data={myProducts}
+						renderItem={({ item }) => (
+							<Product
+								product={item}
+								deleteProduct={deleteProduct}
+							/>
+						)}
 					/>
-				</>
+				</View>
+				<AddProductModal
+					submitHandler={submitHandler}
+					modalVisible={modalVisible}
+					setModalVisible={setModalVisible}
+				/>
 			</ImageBackground>
 		</DismissKeyboard>
 	)
@@ -125,11 +126,10 @@ const styles = StyleSheet.create({
 	globalContainer: {
 		flex: 1,
 		paddingHorizontal: 20,
-		paddingTop: 30,
 	},
 	addProductContainer: {
 		flex: 1,
-		marginTop: 40,
+		marginTop: 30,
 		justifyContent: 'space-between',
 		alignItems: 'center',
 		minHeight: 20,
@@ -137,13 +137,13 @@ const styles = StyleSheet.create({
 	grandientBtn: {
 		width: '100%',
 		fontSize: 17,
-		color: 'white',
+		color: colors.light,
 	},
 	resetBtn: {
-		backgroundColor: 'tomato',
+		backgroundColor: colors.danger,
 		width: '100%',
 		fontSize: 17,
-		color: 'white',
+		color: colors.light,
 	},
 	categoryTitle: {
 		fontWeight: 'bold',
