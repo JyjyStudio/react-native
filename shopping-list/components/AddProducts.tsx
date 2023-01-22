@@ -37,7 +37,7 @@ export default function AddProducts({
 	return (
 		<View style={styles.container}>
 			<TextInput
-				style={styles.textInput}
+				style={product ? styles.textInput : styles.inputPlaceholder}
 				placeholder="Nouveau produit (2 caracteres min)"
 				value={product}
 				onChangeText={(val) => setProduct(val)}
@@ -49,16 +49,16 @@ export default function AddProducts({
 			/>
 			<View style={styles.buttonsContainer}>
 				<Pressable
-					style={[styles.btns, styles.validationBtn]}
-					onPress={handleClick}
-				>
-					<Text style={styles.textBtn}>VALIDER</Text>
-				</Pressable>
-				<Pressable
 					style={[styles.btns, styles.closeBtn]}
 					onPress={() => setModalVisible(!modalVisible)}
 				>
 					<Text style={styles.textBtn}>ANNULER</Text>
+				</Pressable>
+				<Pressable
+					style={[styles.btns, styles.validationBtn]}
+					onPress={handleClick}
+				>
+					<Text style={styles.textBtn}>VALIDER</Text>
 				</Pressable>
 			</View>
 		</View>
@@ -74,6 +74,16 @@ const styles = StyleSheet.create({
 		padding: 5,
 		paddingLeft: 10,
 		marginBottom: 15,
+		borderRadius: 6,
+		fontSize: 17,
+	},
+	inputPlaceholder: {
+		fontSize: 14,
+		borderWidth: 1,
+		padding: 5,
+		paddingLeft: 10,
+		marginBottom: 15,
+		borderRadius: 6,
 	},
 	buttonsContainer: {
 		flexDirection: 'row',
@@ -92,7 +102,6 @@ const styles = StyleSheet.create({
 		backgroundColor: 'tomato',
 	},
 	textBtn: {
-		color: 'white',
 		fontWeight: 'bold',
 		textAlign: 'center',
 		fontSize: 15,

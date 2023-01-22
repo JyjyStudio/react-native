@@ -4,12 +4,13 @@ import {
 	View,
 	FlatList,
 	Alert,
-	Pressable,
 	Text,
+	ImageBackground,
 } from 'react-native'
 import AddProductModal from './components/AddProductModal'
 import DismissKeyboard from './components/DismissKeyboard'
 import Product from './components/Product'
+import ButtonComponent from './components/ButtonComponent'
 
 export default function App() {
 	const [myProducts, setMyProducts] = useState<
@@ -34,10 +35,6 @@ export default function App() {
 			'Êtes vous sûr de vouloir effacer le produit ?',
 			[
 				{
-					text: 'NON',
-					style: 'cancel',
-				},
-				{
 					text: 'OUI',
 					onPress: () =>
 						setMyProducts((currentMyProducts) =>
@@ -46,85 +43,112 @@ export default function App() {
 							)
 						),
 				},
+				{
+					text: 'NON',
+					style: 'cancel',
+				},
 			],
 			{ cancelable: true, onDismiss: () => console.warn('Annulé') }
 		)
 
+	const addCategory = (title: string) => (
+		<Text style={styles.categoryTitle}>{title}</Text>
+	)
+
 	return (
 		<DismissKeyboard>
-			<>
-				<View style={styles.container}>
-					<View style={styles.addProductContainer}>
-						<Pressable
-							style={[styles.button, styles.buttonOpen]}
-							onPress={() => setModalVisible(true)}
-						>
-							<Text style={styles.buttonText}>
-								Ajouter un produit
-							</Text>
-						</Pressable>
-						<Pressable
-							style={[styles.button, styles.buttonReset]}
-							onPress={() => setMyProducts([])}
-						>
-							<Text style={styles.buttonText}>Reset</Text>
-						</Pressable>
-					</View>
-
-					<FlatList
-						style={styles.flatlist}
-						data={myProducts}
-						renderItem={({ item }) => (
-							<Product
-								product={item}
-								deleteProduct={deleteProduct}
+			<ImageBackground
+				source={require('./assets/Abstract-Gradient-1.png')}
+				style={styles.backgoundImage}
+			>
+				<>
+					<View style={styles.globalContainer}>
+						<View style={styles.addProductContainer}>
+							<ButtonComponent
+								title="Ajouter un produit"
+								onPress={() => setModalVisible(true)}
+								gradient
+								colors={[
+									'rgb(120, 220, 234)',
+									'rgb(130, 230, 244)',
+									'rgb(140, 180, 254)',
+									'rgb(190, 120, 264)',
+								]}
+								start={{ x: 0.5, y: 0 }}
+								end={{ x: 0.5, y: 1 }}
+								style={styles.grandientBtn}
 							/>
-						)}
+							<ButtonComponent
+								title="Ajouter une catégorie"
+								onPress={() => addCategory('test')}
+								gradient
+								colors={[
+									'rgb(162, 224, 146)',
+									'rgb(102, 244, 186)',
+									'rgb(51, 139, 147)',
+								]}
+								start={{ x: 0.5, y: 0 }}
+								end={{ x: 0.5, y: 1 }}
+								style={styles.grandientBtn}
+							/>
+							<ButtonComponent
+								title="reset"
+								onPress={() => setMyProducts([])}
+								style={styles.resetBtn}
+							/>
+						</View>
+
+						<FlatList
+							style={styles.flatlist}
+							data={myProducts}
+							renderItem={({ item }) => (
+								<Product
+									product={item}
+									deleteProduct={deleteProduct}
+								/>
+							)}
+						/>
+					</View>
+					<AddProductModal
+						submitHandler={submitHandler}
+						modalVisible={modalVisible}
+						setModalVisible={setModalVisible}
 					/>
-				</View>
-				<AddProductModal
-					submitHandler={submitHandler}
-					modalVisible={modalVisible}
-					setModalVisible={setModalVisible}
-				/>
-			</>
+				</>
+			</ImageBackground>
 		</DismissKeyboard>
 	)
 }
 
 const styles = StyleSheet.create({
-	container: {
+	backgoundImage: {
+		flex: 1,
+	},
+	globalContainer: {
 		flex: 1,
 		paddingHorizontal: 20,
-		paddingTop: 50,
-		// backgroundColor: 'blue',
+		paddingTop: 30,
 	},
 	addProductContainer: {
 		flex: 1,
-		marginTop: 30,
+		marginTop: 40,
 		justifyContent: 'space-between',
 		alignItems: 'center',
+		minHeight: 20,
 	},
-	button: {
-		borderRadius: 20,
-		paddingVertical: 15,
-		paddingHorizontal: 35,
-		elevation: 2,
-		width: '80%',
-		alignItems: 'center',
+	grandientBtn: {
+		width: '100%',
 	},
-	buttonOpen: {
-		backgroundColor: '#F194FF',
-	},
-	buttonReset: {
+	resetBtn: {
 		backgroundColor: 'tomato',
+		width: '100%',
 	},
-	buttonText: {
-		fontSize: 16,
-		color: 'white',
+	categoryTitle: {
+		fontWeight: 'bold',
+		fontSize: 20,
 	},
 	flatlist: {
-		height: '60%',
+		height: '50%',
 		marginTop: 10,
 	},
 })

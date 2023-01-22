@@ -22,9 +22,10 @@ const styles = StyleSheet.create({
 		justifyContent: 'space-between',
 		alignItems: 'center',
 		padding: 30,
-		paddingVertical: 50,
-		backgroundColor: 'lightgreen',
+		paddingVertical: 40,
+		backgroundColor: 'rgba(255,255,255,.5)',
 		marginVertical: 5,
+		borderRadius: 5,
 	},
 	text: {
 		fontSize: 20,

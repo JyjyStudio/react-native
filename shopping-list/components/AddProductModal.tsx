@@ -9,7 +9,7 @@ export default function AddProductModal({
 }: Props) {
 	return (
 		<Modal
-			// transparent
+			transparent
 			animationType="slide"
 			visible={modalVisible}
 			onRequestClose={() => setModalVisible(false)}
@@ -29,13 +29,12 @@ export default function AddProductModal({
 
 const styles = StyleSheet.create({
 	modalContainer: {
-		// backgroundColor: 'rgba(180,200,200,0.9)',
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
 	modalView: {
-		backgroundColor: 'lightgreen',
+		backgroundColor: 'white',
 		height: 220,
 		marginHorizontal: 20,
 		borderRadius: 20,
