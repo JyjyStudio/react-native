@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import {
 	StyleSheet,
 	View,
@@ -13,6 +13,15 @@ import Product from './components/Product'
 import ButtonComponent from './components/ButtonComponent'
 import Header from './components/Header'
 import colors from './constants/colors'
+import * as Font from 'expo-font'
+import * as SplashScreen from 'expo-splash-screen'
+
+const useFonts = async () =>
+	await Font.loadAsync({
+		pacifico: require('./assets/fonts/Pacifico-Regular.ttf'),
+	})
+// Keep the splash screen visible while we fetch resources
+SplashScreen.preventAutoHideAsync()
 
 export default function App() {
 	const [myProducts, setMyProducts] = useState<
@@ -20,7 +29,37 @@ export default function App() {
 	>([])
 
 	const [modalVisible, setModalVisible] = useState(false)
+	const [appIsReady, setAppIsReady] = useState(false)
 
+	useEffect(() => {
+		async function prepare() {
+			try {
+				// Pre-load fonts, make any API calls you need to do here
+				await useFonts()
+			} catch (e) {
+				console.warn(e)
+			} finally {
+				// Tell the application to render
+				setAppIsReady(true)
+			}
+		}
+		prepare()
+	}, [])
+
+	const onLayoutRootView = useCallback(async () => {
+		if (appIsReady) {
+			// This tells the splash screen to hide immediately! If we call this after
+			// `setAppIsReady`, then we may see a blank screen while the app is
+			// loading its initial state and rendering its first pixels. So instead,
+			// we hide the splash screen once we know the root view has already
+			// performed layout.
+			await SplashScreen.hideAsync()
+		}
+	}, [appIsReady])
+
+	if (!appIsReady) {
+		return null
+	}
 	const submitHandler = (product: string) => {
 		const idString = Date.now().toString()
 		if (product.length >= 2) {
@@ -64,7 +103,10 @@ export default function App() {
 				style={styles.backgoundImage}
 			>
 				<Header />
-				<View style={styles.globalContainer}>
+				<View
+					style={styles.globalContainer}
+					onLayout={onLayoutRootView}
+				>
 					<View style={styles.addProductContainer}>
 						<ButtonComponent
 							title="Ajouter un produit"
@@ -154,3 +196,4 @@ const styles = StyleSheet.create({
 		marginTop: 10,
 	},
 })
+

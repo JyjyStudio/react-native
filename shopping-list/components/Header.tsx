@@ -23,7 +23,8 @@ const styles = StyleSheet.create({
 		paddingBottom: 15,
 	},
 	logo: {
-		fontSize: 20,
-		fontWeight: 'bold',
+		fontSize: 30,
+		fontFamily: 'pacifico',
+		color: 'white',
 	},
 })
