@@ -15,6 +15,7 @@ export default function ButtonComponent({
 	colors,
 	start,
 	end,
+	...props
 }: Props) {
 	const styles = StyleSheet.create({
 		button: {
@@ -39,6 +40,7 @@ export default function ButtonComponent({
 					style={style && style}
 					onPress={onPress}
 					activeOpacity={0.8}
+					{...props}
 				>
 					<LinearGradient
 						style={[[styles.button]]}
@@ -56,6 +58,7 @@ export default function ButtonComponent({
 					style={[styles.button, style && style]}
 					onPress={onPress}
 					activeOpacity={0.7}
+					{...props}
 				>
 					<Text style={styles.buttonText}>{title.toUpperCase()}</Text>
 				</TouchableOpacity>
