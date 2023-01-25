@@ -45,14 +45,14 @@ export default function AddProducts({
 			/>
 			<View style={styles.buttonsContainer}>
 				<ButtonComponent
-					title="valider"
-					onPress={handleClick}
-					style={{ ...styles.btns, ...styles.validationBtn }}
-				/>
-				<ButtonComponent
 					title="annuler"
 					onPress={() => setModalVisible(!modalVisible)}
 					style={{ ...styles.btns, ...styles.closeBtn }}
+				/>
+				<ButtonComponent
+					title="valider"
+					onPress={handleClick}
+					style={{ ...styles.btns, ...styles.validationBtn }}
 				/>
 			</View>
 		</View>

@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
 	},
 	logo: {
 		fontSize: 30,
-		fontFamily: 'pacifico',
+		fontFamily: 'Pacifico_400Regular',
 		color: 'white',
 	},
 })
