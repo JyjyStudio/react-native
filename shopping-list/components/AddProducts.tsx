@@ -1,12 +1,4 @@
-import {
-	View,
-	TextInput,
-	StyleSheet,
-	Keyboard,
-	Alert,
-	Pressable,
-	Text,
-} from 'react-native'
+import { View, TextInput, StyleSheet, Keyboard, Alert } from 'react-native'
 import React, { useState } from 'react'
 import ButtonComponent from './ButtonComponent'
 import colors from '../constants/colors'

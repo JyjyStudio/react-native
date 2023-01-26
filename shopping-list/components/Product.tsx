@@ -1,16 +1,19 @@
-import { Text, StyleSheet, TouchableOpacity, Pressable } from 'react-native'
-import React from 'react'
+import { StyleSheet, TouchableOpacity, Pressable } from "react-native"
+import React from "react"
+import { Feather } from "@expo/vector-icons"
+import colors from "../constants/colors"
+import BodyText from "./BodyText"
 
 export default function Product({ product, deleteProduct }: Products) {
 	return (
 		<TouchableOpacity style={styles.productContainer}>
-			<Text style={styles.text}>{product.name}</Text>
+			<BodyText style={styles.text}>{product.name}</BodyText>
 			<Pressable
 				onPress={() => {
 					deleteProduct(product.key)
 				}}
 			>
-				<Text style={styles.icon}>❌</Text>
+				<Feather name="delete" size={24} color={colors.info} />
 			</Pressable>
 		</TouchableOpacity>
 	)
@@ -18,21 +21,17 @@ export default function Product({ product, deleteProduct }: Products) {
 
 const styles = StyleSheet.create({
 	productContainer: {
-		flexDirection: 'row',
-		justifyContent: 'space-between',
-		alignItems: 'center',
+		flexDirection: "row",
+		justifyContent: "space-between",
+		alignItems: "center",
 		padding: 30,
 		paddingVertical: 40,
-		backgroundColor: 'rgba(255,255,255,.5)',
+		backgroundColor: "rgba(255,255,255,.5)",
 		marginVertical: 5,
 		borderRadius: 5,
 	},
 	text: {
 		fontSize: 20,
-	},
-	icon: {
-		fontSize: 20,
-		marginRight: 10,
 	},
 })
 
