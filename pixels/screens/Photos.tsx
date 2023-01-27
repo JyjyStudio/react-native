@@ -4,28 +4,26 @@ import globalStyle from "../constants/globalStyle"
 import { NavigationStackProp } from "react-navigation-stack"
 import LinkButton from "../components/LinkButton"
 
-export default function Portfolio({ navigation }: Props) {
-	const data = navigation.state.params
+export default function Photos({ navigation }: Props) {
 	return (
 		<View style={{ ...globalStyle.container, ...styles.container }}>
 			<Text
 				style={{ ...globalStyle.bodyTitle, ...globalStyle.currentLink }}
 			>
-				Portfolio
+				Photos
 			</Text>
 			<LinkButton title="Home" onPress={() => navigation.popToTop()} />
 			<LinkButton
-				title="Photos"
-				onPress={() => navigation.navigate("Photos")}
+				title="Portfolio"
+				onPress={() => navigation.navigate("Portfolio")}
 			/>
-			<Text>{data?.name}</Text>
 		</View>
 	)
 }
 
 const styles = StyleSheet.create({
 	container: {
-		backgroundColor: "orange",
+		backgroundColor: "lightgreen",
 	},
 })
 

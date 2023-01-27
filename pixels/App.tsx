@@ -1,17 +1,27 @@
-import { StatusBar } from "expo-status-bar"
-import { StyleSheet, Text, View } from "react-native"
-import Home from "./screens/Home"
+import {
+	useFonts,
+	Bellota_300Light,
+	Bellota_300Light_Italic,
+	Bellota_400Regular,
+	Bellota_400Regular_Italic,
+	Bellota_700Bold,
+	Bellota_700Bold_Italic,
+} from "@expo-google-fonts/bellota"
+import StackNav from "./routes/HomeStackNav"
 
 export default function App() {
-	return <Home />
+	let [fontsLoaded] = useFonts({
+		Bellota_300Light,
+		Bellota_300Light_Italic,
+		Bellota_400Regular,
+		Bellota_400Regular_Italic,
+		Bellota_700Bold,
+		Bellota_700Bold_Italic,
+	})
+	if (!fontsLoaded) {
+		return null
+	} else {
+		return <StackNav />
+	}
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: "#fff",
-		alignItems: "center",
-		justifyContent: "center",
-	},
-})
 
