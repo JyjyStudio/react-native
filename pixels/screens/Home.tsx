@@ -1,44 +1,19 @@
-import {
-	FlatList,
-	Image,
-	Pressable,
-	StyleSheet,
-	Text,
-	View,
-} from "react-native"
+import { FlatList, StyleSheet, View } from "react-native"
 import React from "react"
 import globalStyle from "../constants/globalStyle"
 import { NavigationStackProp } from "react-navigation-stack"
 import LinkButton from "../components/LinkButton"
 import DATA from "../assets/data/data"
 import colors from "../constants/colors"
+import PressableNav from "../components/PressableNav"
 
 export default function Home({ navigation }: Props) {
 	const renderItem = ({ item }: { item: Item }) => {
 		return (
-			<Pressable
-				style={({ pressed }) => [
-					{
-						backgroundColor: pressed
-							? colors.clicked
-							: colors.background,
-					},
-					globalStyle.cardContainer,
-				]}
-				onPress={() => navigation.navigate("Portfolio", item)}
-			>
-				<Text style={globalStyle.cardTitle}>{item.name}</Text>
-				<Image
-					style={globalStyle.profilePicture}
-					source={{ uri: item.img }}
-				/>
-				<View style={globalStyle.descriptionContainer}>
-					<Text style={globalStyle.bodyText}>{item.country}</Text>
-					<Text style={globalStyle.bodyText}>
-						{item.totalImg} pics
-					</Text>
-				</View>
-			</Pressable>
+			<PressableNav
+				item={item}
+				handleNavigate={() => navigation.navigate("Profile", item)}
+			/>
 		)
 	}
 	return (
