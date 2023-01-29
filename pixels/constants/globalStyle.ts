@@ -4,13 +4,6 @@ import colors from "./colors"
 export default StyleSheet.create({
 	container: {
 		flex: 1,
-		alignItems: "center",
-	},
-	linksContainer: {
-		flexDirection: "row",
-		justifyContent: "space-evenly",
-		width: "100%",
-		borderBottomWidth: 4,
 	},
 	cardContainer: {
 		marginVertical: 20,
@@ -32,6 +25,8 @@ export default StyleSheet.create({
 	descriptionContainer: {
 		flexDirection: "row",
 		justifyContent: "space-between",
+		width: "50%",
+		paddingTop: 10,
 	},
 	bodyTitle: {
 		fontSize: 30,
