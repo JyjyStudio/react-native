@@ -1,7 +1,9 @@
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native"
 import React from "react"
+import { StyleSheet, Text, View } from "react-native"
 import globalStyle from "../constants/globalStyle"
 import { NavigationStackProp } from "react-navigation-stack"
+import { HeaderButtons, Item } from "react-navigation-header-buttons"
+import MaterialiconHeader from "../components/MaterialiconHeader"
 
 export default function Profile({ navigation }: Props) {
 	return (
@@ -26,9 +28,18 @@ Profile.navigationOptions = (navigationData: Props) => {
 			backgroundColor: favColor,
 		},
 		headerRight: () => (
-			<TouchableOpacity onPress={() => alert(`Je m'appelle ${name} !`)}>
-				<Text style={styles.textInfo}>Infos</Text>
-			</TouchableOpacity>
+			<HeaderButtons HeaderButtonComponent={MaterialiconHeader}>
+				<Item
+					title="info"
+					iconName="info-outline"
+					onPress={() => alert(`Profil de ${name}`)}
+				/>
+				<Item
+					title="infoTwo"
+					iconName="info"
+					onPress={() => alert(`Profil de ${name}`)}
+				/>
+			</HeaderButtons>
 		),
 	}
 }

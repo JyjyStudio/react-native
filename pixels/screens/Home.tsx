@@ -1,14 +1,15 @@
-import { FlatList, StyleSheet, View } from "react-native"
 import React from "react"
-import globalStyle from "../constants/globalStyle"
+import { FlatList, StyleSheet } from "react-native"
 import { NavigationStackProp } from "react-navigation-stack"
-import LinkButton from "../components/LinkButton"
+import { HeaderButtons, Item } from "react-navigation-header-buttons"
+import MaterialiconHeader from "../components/MaterialiconHeader"
+import PressableNav from "../components/PressableNav"
+import globalStyle from "../constants/globalStyle"
 import DATA from "../assets/data/data"
 import colors from "../constants/colors"
-import PressableNav from "../components/PressableNav"
 
 export default function Home({ navigation }: Props) {
-	const renderItem = ({ item }: { item: Item }) => {
+	const renderItem = ({ item }: { item: ItemProp }) => {
 		return (
 			<PressableNav
 				item={item}
@@ -17,29 +18,32 @@ export default function Home({ navigation }: Props) {
 		)
 	}
 	return (
-		<View style={{ ...globalStyle.container, ...styles.container }}>
-			<View style={globalStyle.linksContainer}>
-				<LinkButton
-					title="Portfolio"
-					onPress={() => navigation.navigate("Portfolio")}
-				/>
-				<LinkButton
-					title="Photos"
-					onPress={() => navigation.navigate("Photos")}
-				/>
-			</View>
-			<FlatList
-				style={{ width: "100%" }}
-				data={DATA}
-				renderItem={renderItem}
-			/>
-		</View>
+		<FlatList
+			style={{ ...globalStyle.container, ...styles.container }}
+			data={DATA}
+			renderItem={renderItem}
+		/>
 	)
+}
+
+Home.navigationOptions = () => {
+	return {
+		headerLeft: () => (
+			<HeaderButtons HeaderButtonComponent={MaterialiconHeader}>
+				<Item
+					title="menu"
+					iconName="menu"
+					onPress={() => alert("menu de la page Home")}
+				/>
+			</HeaderButtons>
+		),
+	}
 }
 
 const styles = StyleSheet.create({
 	container: {
 		backgroundColor: colors.background,
+		width: "100%",
 	},
 })
 
@@ -47,7 +51,7 @@ type Props = {
 	navigation: NavigationStackProp
 }
 
-type Item = {
+type ItemProp = {
 	id: string
 	name: string
 	img: string
