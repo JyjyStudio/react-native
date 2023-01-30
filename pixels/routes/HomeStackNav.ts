@@ -21,10 +21,10 @@ const defaultNavigationOptions = {
 		headerStyle: {
 			backgroundColor: "salmon",
 		},
+		headerTitleAlign: "center" as const,
 		headerTintColor: "#fff",
 		headerTitleStyle: {
-			fontSize: 30,
-			// textAlign: "center",
+			fontSize: 27,
 			fontFamily: "Ubuntu_700Bold",
 		},
 	},
