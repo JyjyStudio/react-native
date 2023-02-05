@@ -15,7 +15,7 @@ export default function PressableNav({ item, handleNavigate }: Props) {
 			style={({ pressed }) => [
 				{
 					backgroundColor: pressed
-						? colors.clicked
+						? colors.selected
 						: colors.background,
 				},
 				globalStyle.cardContainer,
