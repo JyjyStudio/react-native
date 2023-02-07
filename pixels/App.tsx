@@ -19,7 +19,7 @@ import {
 	Ubuntu_700Bold_Italic,
 } from "@expo-google-fonts/ubuntu"
 
-import StackNav from "./routes/HomeStackNav"
+import BottomTabNav from "./routes/BottomTabNav"
 
 export default function App() {
 	let [fontsLoaded] = useFonts({
@@ -41,7 +41,6 @@ export default function App() {
 	if (!fontsLoaded) {
 		return null
 	} else {
-		return <StackNav />
+		return <BottomTabNav />
 	}
 }
-
