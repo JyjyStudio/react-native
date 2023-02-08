@@ -1,7 +1,6 @@
-import { createAppContainer } from "react-navigation"
 import { createStackNavigator } from "react-navigation-stack"
 import Home from "../screens/Home"
-import Photos from "../screens/Photos"
+import Likes from "../screens/Likes"
 import Profile from "../screens/Profile"
 
 const screens = {
@@ -11,8 +10,8 @@ const screens = {
 	Profile: {
 		screen: Profile,
 	},
-	Photos: {
-		screen: Photos,
+	Likes: {
+		screen: Likes,
 	},
 }
 
@@ -30,6 +29,6 @@ const defaultNavigationOptions = {
 	},
 }
 
-const StackNav = createStackNavigator(screens, defaultNavigationOptions)
+const HomeStackNav = createStackNavigator(screens, defaultNavigationOptions)
 
-export default createAppContainer(StackNav)
+export default HomeStackNav

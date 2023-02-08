@@ -1,8 +1,6 @@
 import React from "react"
 import { FlatList, StyleSheet } from "react-native"
 import { NavigationStackProp } from "react-navigation-stack"
-import { HeaderButtons, Item } from "react-navigation-header-buttons"
-import MaterialiconHeader from "../components/MaterialiconHeader"
 import PressableNav from "../components/PressableNav"
 import globalStyle from "../constants/globalStyle"
 import DATA from "../assets/data/data"
@@ -24,20 +22,6 @@ export default function Home({ navigation }: Props) {
 			renderItem={renderItem}
 		/>
 	)
-}
-
-Home.navigationOptions = () => {
-	return {
-		headerLeft: () => (
-			<HeaderButtons HeaderButtonComponent={MaterialiconHeader}>
-				<Item
-					title="menu"
-					iconName="menu"
-					onPress={() => alert("menu de la page Home")}
-				/>
-			</HeaderButtons>
-		),
-	}
 }
 
 const styles = StyleSheet.create({
