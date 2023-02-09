@@ -7,23 +7,14 @@ import LinkButton from "../components/LinkButton"
 export default function Photos({ navigation }: Props) {
 	return (
 		<View style={{ ...globalStyle.container, ...styles.container }}>
-			<Text
-				style={{ ...globalStyle.bodyTitle, ...globalStyle.currentLink }}
-			>
-				Photos
-			</Text>
-			<LinkButton title="Home" onPress={() => navigation.popToTop()} />
-			<LinkButton
-				title="Portfolio"
-				onPress={() => navigation.navigate("Portfolio")}
-			/>
+			<Text style={globalStyle.bodyTitle}>Photos</Text>
 		</View>
 	)
 }
 
 const styles = StyleSheet.create({
 	container: {
-		backgroundColor: "lightgreen",
+		flex: 1,
 	},
 })
 

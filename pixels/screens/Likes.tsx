@@ -5,7 +5,7 @@ import globalStyle from "../constants/globalStyle"
 export default function Likes() {
 	return (
 		<View style={globalStyle.container}>
-			<Text style={globalStyle.bodyTitle}>Account</Text>
+			<Text style={globalStyle.bodyTitle}>Likes</Text>
 		</View>
 	)
 }

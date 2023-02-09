@@ -1,10 +1,13 @@
 import { createStackNavigator } from "react-navigation-stack"
+import colors from "../constants/colors"
+import { isIos } from "../constants/globals"
 import Home from "../screens/Home"
 import Likes from "../screens/Likes"
+import Photos from "../screens/Photos"
 import Profile from "../screens/Profile"
 
 const screens = {
-	Home: {
+	Accueil: {
 		screen: Home,
 	},
 	Profile: {
@@ -13,12 +16,15 @@ const screens = {
 	Likes: {
 		screen: Likes,
 	},
+	Photos: {
+		screen: Photos,
+	},
 }
 
 const defaultNavigationOptions = {
 	defaultNavigationOptions: {
 		headerStyle: {
-			backgroundColor: "salmon",
+			backgroundColor: isIos ? colors.iosHeader : colors.androidHeader,
 		},
 		headerTitleAlign: "center" as const,
 		headerTintColor: "#fff",
