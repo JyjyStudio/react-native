@@ -47,4 +47,8 @@ export default StyleSheet.create({
 		fontFamily: "Bellota_700Bold",
 		fontSize: 40,
 	},
+	bottomTabLabel: {
+		fontSize: 15,
+		fontFamily: "Ubuntu_500Medium",
+	},
 })
