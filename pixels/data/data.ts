@@ -1,0 +1,63 @@
+const DATA = [
+	{
+		id: "1",
+		name: "Emma",
+		desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed quae eum nostrum pariatur exercitationem earum natus, dolor placeat! Animi quaerat ducimus fuga sequi a culpa sit illo iste alias aperiam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed quae eum nostrum pariatur exercitationem earum natus, dolor placeat! Animi quaerat ducimus fuga sequi a culpa sit illo iste alias aperiam",
+		country: "Allemagne",
+		totalImg: 3,
+		img: "https://cdn.pixabay.com/photo/2017/12/17/08/44/girl-3023853_960_720.jpg",
+		favColor: "blueviolet",
+		pics: [
+			"https://cdn.pixabay.com/photo/2023/01/21/02/40/cat-7732877_960_720.jpg",
+			"https://cdn.pixabay.com/photo/2022/08/27/00/11/plant-7413415_960_720.png",
+			"https://cdn.pixabay.com/photo/2022/10/10/13/19/lotus-7511823_960_720.jpg",
+		],
+	},
+	{
+		id: "2",
+		name: "Marcel",
+		desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed quae eum nostrum pariatur exercitationem earum natus, dolor placeat! Animi quaerat ducimus fuga sequi a culpa sit illo iste alias aperiam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed quae eum nostrum pariatur exercitationem earum natus, dolor placeat! Animi quaerat ducimus fuga sequi a culpa sit illo iste alias aperiam",
+		country: "France",
+		totalImg: 5,
+		img: "https://cdn.pixabay.com/photo/2018/04/27/03/50/portrait-3353699_960_720.jpg",
+		favColor: "firebrick",
+		pics: [
+			"https://cdn.pixabay.com/photo/2016/10/31/14/55/rottweiler-1785760_960_720.jpg",
+			"https://cdn.pixabay.com/photo/2023/01/30/20/02/bird-7756521_960_720.jpg",
+			"https://cdn.pixabay.com/photo/2021/10/01/18/53/corgi-6673343_960_720.jpg",
+			"https://cdn.pixabay.com/photo/2022/11/03/03/05/apples-7566512_960_720.jpg",
+			"https://cdn.pixabay.com/photo/2022/12/22/02/56/dog-7671355_960_720.jpg",
+		],
+	},
+	{
+		id: "3",
+		name: "Diana",
+		desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed quae eum nostrum pariatur exercitationem earum natus, dolor placeat! Animi quaerat ducimus fuga sequi a culpa sit illo iste alias aperiam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed quae eum nostrum pariatur exercitationem earum natus, dolor placeat! Animi quaerat ducimus fuga sequi a culpa sit illo iste alias aperiam",
+		country: "Espagne",
+		totalImg: 4,
+		img: "https://cdn.pixabay.com/photo/2019/08/13/05/39/girl-4402542_960_720.jpg",
+		favColor: "lightgreen",
+		pics: [
+			"https://cdn.pixabay.com/photo/2014/12/24/05/02/drop-of-water-578897_960_720.jpg",
+			"https://cdn.pixabay.com/photo/2014/09/21/14/39/surface-455124_960_720.jpg",
+			"https://cdn.pixabay.com/photo/2015/07/04/12/09/window-831251_960_720.jpg",
+			"https://cdn.pixabay.com/photo/2023/02/04/14/22/fish-7767315_960_720.jpg",
+		],
+	},
+	{
+		id: "4",
+		name: "Diego",
+		desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed quae eum nostrum pariatur exercitationem earum natus, dolor placeat! Animi quaerat ducimus fuga sequi a culpa sit illo iste alias aperiam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed quae eum nostrum pariatur exercitationem earum natus, dolor placeat! Animi quaerat ducimus fuga sequi a culpa sit illo iste alias aperiam",
+		country: "Italie",
+		totalImg: 5,
+		img: "https://cdn.pixabay.com/photo/2017/03/24/18/59/face-2171923_960_720.jpg",
+		favColor: "orangered",
+		pics: [
+			"https://cdn.pixabay.com/photo/2015/03/27/13/16/maine-coon-694730_960_720.jpg",
+			"https://cdn.pixabay.com/photo/2015/11/16/14/43/cat-1045782_960_720.jpg",
+			"https://cdn.pixabay.com/photo/2014/11/30/14/11/cat-551554_960_720.jpg",
+			"https://cdn.pixabay.com/photo/2015/04/23/21/59/tree-736877_960_720.jpg",
+		],
+	},
+]
+export default DATA

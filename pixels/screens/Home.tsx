@@ -3,7 +3,7 @@ import { FlatList, StyleSheet } from "react-native"
 import { NavigationStackProp } from "react-navigation-stack"
 import PressableNav from "../components/PressableNav"
 import globalStyle from "../constants/globalStyle"
-import DATA from "../assets/data/data"
+import DATA from "../data/data"
 import colors from "../constants/colors"
 
 export default function Home({ navigation }: Props) {

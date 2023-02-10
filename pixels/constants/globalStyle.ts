@@ -22,6 +22,12 @@ export default StyleSheet.create({
 		height: 300,
 		borderRadius: 150,
 	},
+	portfolioPicture: {
+		width: "90%",
+		height: 300,
+		margin: 15,
+		borderRadius: 5,
+	},
 	descriptionContainer: {
 		flexDirection: "row",
 		justifyContent: "space-between",
@@ -50,5 +56,8 @@ export default StyleSheet.create({
 	bottomTabLabel: {
 		fontSize: 15,
 		fontFamily: "Ubuntu_500Medium",
+	},
+	flatlist: {
+		width: "100%",
 	},
 })
