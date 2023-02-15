@@ -38,8 +38,9 @@ type Props = {
 type ItemProp = {
 	id: string
 	name: string
-	img: string
 	desc: string
 	country: string
-	totalImg: number
+	img: string
+	favColor: string
+	pics: string[]
 }

@@ -4,7 +4,6 @@ const DATA = [
 		name: "Emma",
 		desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed quae eum nostrum pariatur exercitationem earum natus, dolor placeat! Animi quaerat ducimus fuga sequi a culpa sit illo iste alias aperiam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed quae eum nostrum pariatur exercitationem earum natus, dolor placeat! Animi quaerat ducimus fuga sequi a culpa sit illo iste alias aperiam",
 		country: "Allemagne",
-		totalImg: 3,
 		img: "https://cdn.pixabay.com/photo/2017/12/17/08/44/girl-3023853_960_720.jpg",
 		favColor: "blueviolet",
 		pics: [
@@ -18,7 +17,6 @@ const DATA = [
 		name: "Marcel",
 		desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed quae eum nostrum pariatur exercitationem earum natus, dolor placeat! Animi quaerat ducimus fuga sequi a culpa sit illo iste alias aperiam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed quae eum nostrum pariatur exercitationem earum natus, dolor placeat! Animi quaerat ducimus fuga sequi a culpa sit illo iste alias aperiam",
 		country: "France",
-		totalImg: 5,
 		img: "https://cdn.pixabay.com/photo/2018/04/27/03/50/portrait-3353699_960_720.jpg",
 		favColor: "firebrick",
 		pics: [
@@ -34,7 +32,6 @@ const DATA = [
 		name: "Diana",
 		desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed quae eum nostrum pariatur exercitationem earum natus, dolor placeat! Animi quaerat ducimus fuga sequi a culpa sit illo iste alias aperiam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed quae eum nostrum pariatur exercitationem earum natus, dolor placeat! Animi quaerat ducimus fuga sequi a culpa sit illo iste alias aperiam",
 		country: "Espagne",
-		totalImg: 4,
 		img: "https://cdn.pixabay.com/photo/2019/08/13/05/39/girl-4402542_960_720.jpg",
 		favColor: "lightgreen",
 		pics: [
@@ -49,7 +46,6 @@ const DATA = [
 		name: "Diego",
 		desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed quae eum nostrum pariatur exercitationem earum natus, dolor placeat! Animi quaerat ducimus fuga sequi a culpa sit illo iste alias aperiam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed quae eum nostrum pariatur exercitationem earum natus, dolor placeat! Animi quaerat ducimus fuga sequi a culpa sit illo iste alias aperiam",
 		country: "Italie",
-		totalImg: 5,
 		img: "https://cdn.pixabay.com/photo/2017/03/24/18/59/face-2171923_960_720.jpg",
 		favColor: "orangered",
 		pics: [
@@ -57,6 +53,7 @@ const DATA = [
 			"https://cdn.pixabay.com/photo/2015/11/16/14/43/cat-1045782_960_720.jpg",
 			"https://cdn.pixabay.com/photo/2014/11/30/14/11/cat-551554_960_720.jpg",
 			"https://cdn.pixabay.com/photo/2015/04/23/21/59/tree-736877_960_720.jpg",
+			"https://cdn.pixabay.com/photo/2023/02/07/13/39/monkey-7774171_960_720.jpg",
 		],
 	},
 ]

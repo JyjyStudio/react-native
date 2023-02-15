@@ -29,7 +29,9 @@ export default function PressableNav({ item, handleNavigate }: Props) {
 			/>
 			<View style={globalStyle.descriptionContainer}>
 				<Text style={globalStyle.bodyText}>{item.country}</Text>
-				<Text style={globalStyle.bodyText}>{item.totalImg} pics</Text>
+				<Text style={globalStyle.bodyText}>
+					{item.pics.length} pics
+				</Text>
 			</View>
 		</Pressable>
 	)
@@ -43,8 +45,9 @@ type Props = {
 type Item = {
 	id: string
 	name: string
-	img: string
 	desc: string
 	country: string
-	totalImg: number
+	img: string
+	favColor: string
+	pics: string[]
 }
