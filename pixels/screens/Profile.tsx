@@ -1,52 +1,68 @@
 import React from "react"
-import { Image, StyleSheet, Text, View } from "react-native"
+import { Text, View, ScrollView, StyleSheet, Image, Alert } from "react-native"
 import globalStyle from "../constants/globalStyle"
-import { NavigationStackProp } from "react-navigation-stack"
-import { HeaderButtons, Item } from "react-navigation-header-buttons"
-import MaterialiconHeader from "../components/MaterialiconHeader"
 import colors from "../constants/colors"
-import { FlatList } from "react-native-gesture-handler"
+import MaterialIconsHeader from "../components/MaterialIconHeader"
+import { HeaderButtons, Item } from "react-navigation-header-buttons"
+import TouchableImage from "../components/TouchableImage"
+import { NavigationStackProp } from "react-navigation-stack"
 
-export default function Profile({ navigation }: Props) {
-	const data = navigation.state.params
-	const renderItem = ({ item }: { item: string }) => (
-		<View style={styles.imgContainer}>
-			<Image
-				source={{ uri: item }}
-				style={globalStyle.portfolioPicture}
-			/>
-		</View>
-	)
+const Portfolio = ({ navigation }: Props) => {
+	const favColor = navigation.getParam("favColor")
+	const name = navigation.getParam("name")
+	const profilImg = navigation.getParam("img")
+	const desc = navigation.getParam("desc")
+	const photoArray = navigation.getParam("photos")
+
+	const selectPhoto = (photo: Photo) => {
+		navigation.navigate("Photo", photo)
+	}
 
 	return (
-		<View style={{ ...globalStyle.container, ...styles.container }}>
-			<Text style={{ ...globalStyle.bodyText, ...styles.textInfo }}>
-				Photos de {navigation.getParam("name")}:
-			</Text>
-			<FlatList
-				data={data?.pics}
-				renderItem={renderItem}
-				style={globalStyle.flatlist}
-			/>
-		</View>
+		<ScrollView style={globalStyle.container}>
+			<View style={{ backgroundColor: favColor, ...styles.profilInfos }}>
+				<Image
+					style={styles.smallprofileImg}
+					source={{ uri: profilImg }}
+				/>
+				<Text style={styles.profilName}>{name}</Text>
+			</View>
+			<View style={styles.profilDescription}>
+				<Text style={styles.titleBioText}>Bio: </Text>
+				<Text style={styles.textBio}>{desc}</Text>
+			</View>
+			<View>
+				{photoArray.map((photo: Photo) => (
+					<TouchableImage
+						key={photo.id}
+						imgUrl={photo.url}
+						imgTitle={photo.title}
+						onSelectPhoto={() => selectPhoto(photo)}
+					/>
+				))}
+			</View>
+		</ScrollView>
 	)
 }
 
-Profile.navigationOptions = (navigationData: Props) => {
+Portfolio.navigationOptions = (navigationData: Props) => {
 	const name = navigationData.navigation.getParam("name")
 	const favColor = navigationData.navigation.getParam("favColor")
+	const handleLike = navigationData.navigation.getParam("handleLike")
+	const isSelected = navigationData.navigation.getParam("isSelected")
 
 	return {
-		title: `Profil de ${name}`,
+		headerTitle: `Profil de ${name}`,
 		headerStyle: {
 			backgroundColor: favColor,
 		},
+		headerTintColor: colors.light,
 		headerRight: () => (
-			<HeaderButtons HeaderButtonComponent={MaterialiconHeader}>
+			<HeaderButtons HeaderButtonComponent={MaterialIconsHeader}>
 				<Item
-					title="info"
-					iconName="info-outline"
-					onPress={() => alert(`Profil de ${name}`)}
+					title="Ajouter"
+					iconName={isSelected ? "delete" : "thumb-up"}
+					onPress={handleLike}
 				/>
 			</HeaderButtons>
 		),
@@ -54,20 +70,49 @@ Profile.navigationOptions = (navigationData: Props) => {
 }
 
 const styles = StyleSheet.create({
-	container: {
-		backgroundColor: colors.background,
-		paddingTop: 30,
-	},
-	textInfo: {
-		alignSelf: "flex-start",
-		marginBottom: 10,
-		marginLeft: "5%",
-	},
-	imgContainer: {
+	profilInfos: {
 		alignItems: "center",
+		padding: 10,
+	},
+	smallprofileImg: {
+		width: 150,
+		height: 150,
+		borderRadius: 150 / 2,
+		margin: 9,
+		borderWidth: 6,
+		borderColor: colors.light,
+	},
+	profilName: {
+		fontFamily: "Ubuntu_700Bold",
+		color: colors.light,
+		fontSize: 25,
+	},
+	profilDescription: {
+		backgroundColor: colors.ghost,
+		padding: 15,
+		fontSize: 25,
+		fontFamily: "Ubuntu_400Regular",
+	},
+	titleBioText: {
+		fontSize: 25,
+		padding: 9,
+		fontFamily: "Ubuntu_700Bold",
+	},
+	textBio: {
+		fontFamily: "Ubuntu_400Regular",
+		fontSize: 20,
+		padding: 9,
 	},
 })
 
+export default Portfolio
+
 type Props = {
 	navigation: NavigationStackProp
+}
+
+type Photo = {
+	id: number
+	url: string
+	title: string
 }

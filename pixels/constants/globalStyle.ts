@@ -23,10 +23,9 @@ export default StyleSheet.create({
 		borderRadius: 150,
 	},
 	portfolioPicture: {
-		width: "90%",
+		width: "100%",
 		height: 300,
 		margin: 15,
-		borderRadius: 5,
 	},
 	descriptionContainer: {
 		flexDirection: "row",

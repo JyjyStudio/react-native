@@ -3,7 +3,7 @@ import { FlatList, StyleSheet } from "react-native"
 import { NavigationStackProp } from "react-navigation-stack"
 import PressableNav from "../components/PressableNav"
 import globalStyle from "../constants/globalStyle"
-import DATA from "../data/data"
+import { DATA } from "../data/data"
 import colors from "../constants/colors"
 
 export default function Home({ navigation }: Props) {
@@ -40,7 +40,13 @@ type ItemProp = {
 	name: string
 	desc: string
 	country: string
+	category: string
 	img: string
 	favColor: string
-	pics: string[]
+	photos: {
+		id: number
+		url: string
+		title: string
+		photoDesc: string
+	}[]
 }
