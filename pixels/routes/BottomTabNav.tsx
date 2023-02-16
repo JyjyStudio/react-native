@@ -6,9 +6,7 @@ import HomeStackNav from "./HomeStackNav"
 import colors from "../constants/colors"
 import { Entypo } from "@expo/vector-icons"
 import { AntDesign } from "@expo/vector-icons"
-import { MaterialCommunityIcons } from "@expo/vector-icons"
 import LikesStackNav from "./LikesStackNav"
-import PhotosStackNav from "./PhotosStackNav"
 import globalStyle from "../constants/globalStyle"
 
 const RouteConfigs = {
@@ -29,19 +27,6 @@ const RouteConfigs = {
 			tabBarLabel: <Text style={globalStyle.bottomTabLabel}>Likes</Text>,
 			tabBarIcon: ({ tintColor }: TabBarIcon) => (
 				<AntDesign name="like1" size={24} color={tintColor} />
-			),
-		},
-	},
-	Photos: {
-		screen: PhotosStackNav,
-		navigationOptions: {
-			tabBarLabel: <Text style={globalStyle.bottomTabLabel}>Photos</Text>,
-			tabBarIcon: ({ tintColor }: TabBarIcon) => (
-				<MaterialCommunityIcons
-					name="camera"
-					size={24}
-					color={tintColor}
-				/>
 			),
 		},
 	},

@@ -1,22 +1,51 @@
-import { StyleSheet, Text, View, Button } from "react-native"
 import React from "react"
-import globalStyle from "../constants/globalStyle"
+import { StyleSheet, Text, View, ScrollView, Image } from "react-native"
 import { NavigationStackProp } from "react-navigation-stack"
-import LinkButton from "../components/LinkButton"
+import globalStyle from "../constants/globalStyle"
 
-export default function Photos({ navigation }: Props) {
+const Photo = ({ navigation }: Props) => {
+	const url = navigation.getParam("url")
+	const title = navigation.getParam("title")
+	const photoDesc = navigation.getParam("photoDesc")
+
 	return (
-		<View style={{ ...globalStyle.container, ...styles.container }}>
-			<Text style={globalStyle.bodyTitle}>Photos</Text>
-		</View>
+		<ScrollView style={globalStyle.container}>
+			<Image style={styles.selectedImage} source={{ uri: url }} />
+			<View style={styles.photoDescription}>
+				<Text style={globalStyle.titleText}>{title}</Text>
+
+				<Text style={styles.textDescription}>{photoDesc}</Text>
+				<Text style={styles.textDescription}>{photoDesc}</Text>
+			</View>
+		</ScrollView>
 	)
 }
 
+Photo.navigationOptions = ({ navigation }: Props) => {
+	const photoTitle = navigation.getParam("title")
+	return {
+		headerTitle: photoTitle.toUpperCase(),
+	}
+}
+
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
+	selectedImage: {
+		width: "100%",
+		height: 300,
+	},
+	photoDescription: {
+		padding: 15,
+		fontSize: 25,
+		fontFamily: "Ubuntu_400Regular",
+	},
+	textDescription: {
+		fontFamily: "Ubuntu_400Regular",
+		fontSize: 20,
+		padding: 9,
 	},
 })
+
+export default Photo
 
 type Props = {
 	navigation: NavigationStackProp

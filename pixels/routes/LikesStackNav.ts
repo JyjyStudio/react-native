@@ -1,8 +1,7 @@
 import { createStackNavigator } from "react-navigation-stack"
-import { defaultNavigationOptions, isIos } from "../constants/globals"
+import { defaultNavigationOptions } from "../constants/globals"
 import Home from "../screens/Home"
 import Likes from "../screens/Likes"
-import Photos from "../screens/Photos"
 
 const screens = {
 	Likes: {
@@ -10,9 +9,6 @@ const screens = {
 	},
 	Accueil: {
 		screen: Home,
-	},
-	Photos: {
-		screen: Photos,
 	},
 }
 

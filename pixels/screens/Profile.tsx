@@ -15,7 +15,7 @@ const Portfolio = ({ navigation }: Props) => {
 	const photoArray = navigation.getParam("photos")
 
 	const selectPhoto = (photo: Photo) => {
-		navigation.navigate("Photo", photo)
+		navigation.navigate("Photos", photo)
 	}
 
 	return (

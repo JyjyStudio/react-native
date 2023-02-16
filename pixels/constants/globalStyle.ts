@@ -33,6 +33,11 @@ export default StyleSheet.create({
 		width: "50%",
 		paddingTop: 10,
 	},
+	titleText: {
+		fontSize: 25,
+		padding: 9,
+		fontFamily: "Ubuntu_700Bold",
+	},
 	bodyTitle: {
 		fontSize: 30,
 		color: colors.dark,
