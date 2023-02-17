@@ -21,6 +21,9 @@ import {
 
 import BottomTabNav from "./routes/BottomTabNav"
 
+import store from "./redux/store"
+import { Provider } from "react-redux"
+
 export default function App() {
 	let [fontsLoaded] = useFonts({
 		Bellota_300Light,
@@ -41,6 +44,10 @@ export default function App() {
 	if (!fontsLoaded) {
 		return null
 	} else {
-		return <BottomTabNav />
+		return (
+			<Provider store={store}>
+				<BottomTabNav />
+			</Provider>
+		)
 	}
 }

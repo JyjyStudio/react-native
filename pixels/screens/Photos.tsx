@@ -1,9 +1,10 @@
 import React from "react"
 import { StyleSheet, Text, View, ScrollView, Image } from "react-native"
 import { NavigationStackProp } from "react-navigation-stack"
+import { NavigationProps } from "../constants/globals"
 import globalStyle from "../constants/globalStyle"
 
-const Photo = ({ navigation }: Props) => {
+const Photo = ({ navigation }: NavigationProps) => {
 	const url = navigation.getParam("url")
 	const title = navigation.getParam("title")
 	const photoDesc = navigation.getParam("photoDesc")
@@ -21,7 +22,7 @@ const Photo = ({ navigation }: Props) => {
 	)
 }
 
-Photo.navigationOptions = ({ navigation }: Props) => {
+Photo.navigationOptions = ({ navigation }: NavigationProps) => {
 	const photoTitle = navigation.getParam("title")
 	return {
 		headerTitle: photoTitle.toUpperCase(),
@@ -46,7 +47,3 @@ const styles = StyleSheet.create({
 })
 
 export default Photo
-
-type Props = {
-	navigation: NavigationStackProp
-}

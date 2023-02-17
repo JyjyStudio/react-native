@@ -109,7 +109,7 @@ export const DATA = [
 			},
 			{
 				id: 4,
-				url: "https://cdn.pixabay.com/photo/2015/11/07/11/17/dog-1030992_960_720.jpg",
+				url: "https://cdn.pixabay.com/photo/2020/03/25/11/32/chow-chow-4966952_960_720.jpg",
 				title: "Chow-chow",
 				photoDesc:
 					"Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed quae eum nostrum pariatur exercitationem earum natus, dolor placeat! Animi quaerat ducimus fuga sequi a culpa sit illo iste alias aperiam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed quae eum nostrum pariatur exercitationem earum natus, dolor placeat! Animi quaerat ducimus fuga sequi a culpa sit illo iste alias aperiam",

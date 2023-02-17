@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useCallback, useEffect } from "react"
 import { Text, View, ScrollView, StyleSheet, Image, Alert } from "react-native"
 import globalStyle from "../constants/globalStyle"
 import colors from "../constants/colors"
@@ -6,13 +6,50 @@ import MaterialIconsHeader from "../components/MaterialIconHeader"
 import { HeaderButtons, Item } from "react-navigation-header-buttons"
 import TouchableImage from "../components/TouchableImage"
 import { NavigationStackProp } from "react-navigation-stack"
+import { setSelection } from "../redux/actions/actionSelection"
+import { useDispatch, useSelector } from "react-redux"
+import { RootState } from "../redux/store"
+import { Photo } from "../redux/constants"
 
 const Portfolio = ({ navigation }: Props) => {
+	const dispatch = useDispatch()
+
 	const favColor = navigation.getParam("favColor")
 	const name = navigation.getParam("name")
 	const profilImg = navigation.getParam("img")
 	const desc = navigation.getParam("desc")
 	const photoArray = navigation.getParam("photos")
+	const userId = navigation.getParam("id")
+
+	const selectedUser = useSelector((state: RootState) =>
+		state.users.selectedUsers.some((user) => user.id === userId)
+	)
+
+	const handleDispatch = useCallback(() => {
+		dispatch(setSelection(userId))
+
+		if (selectedUser) {
+			Alert.alert(
+				"Photos effacées",
+				`Les photos de ${name} sont effacées`,
+				[{ text: "OK" }]
+			)
+		} else {
+			Alert.alert(
+				"Photos enregistrées",
+				"Elles sont disponibles dans votre sélection",
+				[{ text: "OK" }]
+			)
+		}
+	}, [dispatch, userId, selectedUser])
+
+	useEffect(() => {
+		navigation.setParams({ handleLike: handleDispatch })
+	}, [handleDispatch])
+
+	useEffect(() => {
+		navigation.setParams({ isSelected: selectedUser })
+	}, [selectedUser])
 
 	const selectPhoto = (photo: Photo) => {
 		navigation.navigate("Photos", photo)
@@ -109,10 +146,4 @@ export default Portfolio
 
 type Props = {
 	navigation: NavigationStackProp
-}
-
-type Photo = {
-	id: number
-	url: string
-	title: string
 }

@@ -1,12 +1,12 @@
 import React from "react"
 import { FlatList, StyleSheet } from "react-native"
-import { NavigationStackProp } from "react-navigation-stack"
 import PressableNav from "../components/PressableNav"
 import globalStyle from "../constants/globalStyle"
 import { DATA } from "../data/data"
 import colors from "../constants/colors"
+import { NavigationProps } from "../constants/globals"
 
-export default function Home({ navigation }: Props) {
+export default function Home({ navigation }: NavigationProps) {
 	const renderItem = ({ item }: { item: ItemProp }) => {
 		return (
 			<PressableNav
@@ -30,10 +30,6 @@ const styles = StyleSheet.create({
 		width: "100%",
 	},
 })
-
-type Props = {
-	navigation: NavigationStackProp
-}
 
 type ItemProp = {
 	id: string
