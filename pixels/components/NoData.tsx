@@ -2,7 +2,7 @@ import React from "react"
 import { ImageBackground, StyleSheet, Text } from "react-native"
 import colors from "../constants/colors"
 
-export default function EmptyLikes({ children }: { children: string }) {
+export default function NoData({ children }: { children: string }) {
 	return (
 		<ImageBackground
 			source={{

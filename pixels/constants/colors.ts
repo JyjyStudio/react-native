@@ -10,4 +10,5 @@ export default {
 	inactiveLink: "#B4B4B4",
 	brown: "#cd6133",
 	ghost: "ghostwhite",
+	lightGrey: "#767577",
 }

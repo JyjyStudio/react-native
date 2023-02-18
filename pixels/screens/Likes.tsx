@@ -1,7 +1,7 @@
 import React from "react"
 import { View, FlatList } from "react-native"
 import globalStyle from "../constants/globalStyle"
-import EmptyLikes from "../components/EmptyLikes"
+import EmptyLikes from "../components/NoData"
 import { NavigationProps } from "../constants/globals"
 import { useTsSelector } from "../redux/hooks"
 import LikedPictures from "../components/LikedPictures"

@@ -64,4 +64,24 @@ export default StyleSheet.create({
 	flatlist: {
 		width: "100%",
 	},
+	infoContainer: {
+		width: "100%",
+		paddingVertical: 20,
+		flexDirection: "row",
+		justifyContent: "space-around",
+		alignItems: "center",
+	},
+	infos: {
+		fontSize: 20,
+		fontFamily: "Ubuntu_300Light",
+	},
+	profileImg: {
+		width: 350,
+		height: 350,
+		borderRadius: 14,
+	},
+	profileItem: {
+		padding: 15,
+		alignItems: "center",
+	},
 })
