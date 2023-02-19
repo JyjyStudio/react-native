@@ -1,10 +1,7 @@
-export const SET_SELECTION = "SET_SELECTION"
-export const SET_SETTINGS = "SET_SETTINGS"
-
 // Types
 export type InitialState = {
 	users: Users
-	selectedUsers: [] | Users
+	selectedUsers: Users
 	selectedCategories: Users
 }
 export type User = {
@@ -16,6 +13,7 @@ export type User = {
 	img: string
 	favColor: string
 	photos: Photo[]
+	already_liked?: boolean
 }
 export type Users = User[]
 export type Photo = {
@@ -23,4 +21,10 @@ export type Photo = {
 	photoDesc: string
 	title: string
 	url: string
+}
+
+export type saved_settings = {
+	animals: boolean
+	travel: boolean
+	cars: boolean
 }

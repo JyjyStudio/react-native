@@ -11,7 +11,7 @@ export default function Likes({ navigation }: NavigationProps) {
 
 	return (
 		<View style={globalStyle.container}>
-			{selectedUsers.length ? (
+			{selectedUsers?.length ? (
 				<FlatList
 					data={selectedUsers}
 					renderItem={(selectedUsers) => (

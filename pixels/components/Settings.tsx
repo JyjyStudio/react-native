@@ -1,13 +1,13 @@
 import React, { useState, useCallback } from "react"
 import { Button, StyleSheet, Text, View } from "react-native"
+import { save_settings } from "../redux/slices/userSlice"
+import { useTsDispatch } from "../redux/hooks"
+import CustomSwitch from "./CustomSwitch"
 import globalStyle from "../constants/globalStyle"
 import colors from "../constants/colors"
-import CustomSwitch from "./CustomSwitch"
-import { setCategorySettings } from "../redux/actions/actionSettings"
-import { useDispatch } from "react-redux"
 
 const Settings = ({ closeModal }: any) => {
-	const dispatch = useDispatch()
+	const dispatch = useTsDispatch()
 
 	const [isAnimals, setIsAnimals] = useState(true)
 	const [isTravel, setIsTravel] = useState(true)
@@ -21,7 +21,7 @@ const Settings = ({ closeModal }: any) => {
 		}
 
 		// dispatch action
-		dispatch(setCategorySettings(savedSettings))
+		dispatch(save_settings(savedSettings))
 		closeModal()
 	}, [isAnimals, isTravel, isCars])
 

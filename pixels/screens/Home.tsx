@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from "react"
 import { FlatList, Modal, StyleSheet, View } from "react-native"
-import PressableNav from "../components/PressableNav"
-import globalStyle from "../constants/globalStyle"
-import colors from "../constants/colors"
 import { NavigationProps } from "../constants/globals"
 import { useTsSelector } from "../redux/hooks"
-import { MaterialIcons } from "@expo/vector-icons"
+import { RootState } from "../redux/store"
 import Settings from "../components/Settings"
-import { HeaderButtons, Item } from "react-navigation-header-buttons"
+import PressableNav from "../components/PressableNav"
 import MaterialiconHeader from "../components/MaterialIconHeader"
+import { MaterialIcons } from "@expo/vector-icons"
+import { HeaderButtons, Item } from "react-navigation-header-buttons"
+import globalStyle from "../constants/globalStyle"
+import colors from "../constants/colors"
 
 export default function Home({ navigation }: NavigationProps) {
 	const [modalVisible, setModalVisible] = useState(false)
 
 	const selectedCategories = useTsSelector(
-		(state) => state.users.selectedCategories
+		(state: RootState) => state.users.selectedCategories
 	)
 
 	const handleSettingsModal = () => {
@@ -46,9 +47,9 @@ export default function Home({ navigation }: NavigationProps) {
 				</View>
 			</Modal>
 			<FlatList
-				style={{ ...globalStyle.container, ...styles.container }}
 				data={selectedCategories}
 				renderItem={renderProfiles}
+				style={{ ...globalStyle.container, ...styles.container }}
 			/>
 		</View>
 	)
@@ -56,7 +57,6 @@ export default function Home({ navigation }: NavigationProps) {
 
 Home.navigationOptions = ({ navigation }: NavigationProps) => {
 	const handleModal = navigation.getParam("handleModal")
-	console.log("handleModal:", handleModal)
 
 	return {
 		// headerLeft: () => (

@@ -1,19 +1,20 @@
 import React, { useCallback, useEffect } from "react"
 import { Text, View, ScrollView, StyleSheet, Image, Alert } from "react-native"
-import globalStyle from "../constants/globalStyle"
-import colors from "../constants/colors"
+import { NavigationStackProp } from "react-navigation-stack"
+import { RootState } from "../redux/store"
 import MaterialIconsHeader from "../components/MaterialIconHeader"
 import { HeaderButtons, Item } from "react-navigation-header-buttons"
 import TouchableImage from "../components/TouchableImage"
-import { NavigationStackProp } from "react-navigation-stack"
-import { setSelection } from "../redux/actions/actionSelection"
-import { useDispatch, useSelector } from "react-redux"
-import { RootState } from "../redux/store"
 import { Photo } from "../redux/constants"
+import { useTsDispatch, useTsSelector } from "../redux/hooks"
+import { like, unlike } from "../redux/slices/userSlice"
+import globalStyle from "../constants/globalStyle"
+import colors from "../constants/colors"
 
 const Portfolio = ({ navigation }: Props) => {
-	const dispatch = useDispatch()
+	const dispatch = useTsDispatch()
 
+	const user = JSON.parse(JSON.stringify(navigation.state.params))
 	const favColor = navigation.getParam("favColor")
 	const name = navigation.getParam("name")
 	const profilImg = navigation.getParam("img")
@@ -21,35 +22,35 @@ const Portfolio = ({ navigation }: Props) => {
 	const photoArray = navigation.getParam("photos")
 	const userId = navigation.getParam("id")
 
-	const selectedUser = useSelector((state: RootState) =>
-		state.users.selectedUsers.some((user) => user.id === userId)
+	const already_liked = useTsSelector((state: RootState) =>
+		state.users.selectedUsers?.some((user) => user.id === userId)
 	)
 
-	const handleDispatch = useCallback(() => {
-		dispatch(setSelection(userId))
-
-		if (selectedUser) {
+	const handleLike = useCallback(() => {
+		if (already_liked) {
+			dispatch(unlike(user.id))
 			Alert.alert(
 				"Photos effacées",
 				`Les photos de ${name} sont effacées`,
 				[{ text: "OK" }]
 			)
 		} else {
+			dispatch(like(user))
 			Alert.alert(
 				"Photos enregistrées",
 				"Elles sont disponibles dans votre sélection",
 				[{ text: "OK" }]
 			)
 		}
-	}, [dispatch, userId, selectedUser])
+	}, [dispatch, userId, already_liked])
 
 	useEffect(() => {
-		navigation.setParams({ handleLike: handleDispatch })
-	}, [handleDispatch])
+		navigation.setParams({ handleLike })
+	}, [handleLike])
 
 	useEffect(() => {
-		navigation.setParams({ isSelected: selectedUser })
-	}, [selectedUser])
+		navigation.setParams({ already_liked })
+	}, [already_liked])
 
 	const selectPhoto = (photo: Photo) => {
 		navigation.navigate("Photos", photo)
@@ -86,7 +87,7 @@ Portfolio.navigationOptions = (navigationData: Props) => {
 	const name = navigationData.navigation.getParam("name")
 	const favColor = navigationData.navigation.getParam("favColor")
 	const handleLike = navigationData.navigation.getParam("handleLike")
-	const isSelected = navigationData.navigation.getParam("isSelected")
+	const already_liked = navigationData.navigation.getParam("already_liked")
 
 	return {
 		headerTitle: `Profil de ${name}`,
@@ -98,7 +99,7 @@ Portfolio.navigationOptions = (navigationData: Props) => {
 			<HeaderButtons HeaderButtonComponent={MaterialIconsHeader}>
 				<Item
 					title="Ajouter"
-					iconName={isSelected ? "delete" : "thumb-up"}
+					iconName={already_liked ? "delete" : "thumb-up"}
 					onPress={handleLike}
 				/>
 			</HeaderButtons>
