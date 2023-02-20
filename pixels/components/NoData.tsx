@@ -6,8 +6,9 @@ export default function NoData({ children }: { children: string }) {
 	return (
 		<ImageBackground
 			source={{
-				uri: "https://cdn.pixabay.com/photo/2016/11/29/08/27/fog-1868416_960_720.jpg",
+				uri: "https://img.freepik.com/vecteurs-libre/illustration-costume-astronaute_114360-8538.jpg?w=740&t=st=1676827435~exp=1676828035~hmac=df6a8892ccb9dfb357f73c59383f353689d86085eaadfbe2b34c6f91faaeeea3",
 			}}
+			resizeMode="contain"
 			style={styles.emptyMsgWrapper}
 		>
 			<Text style={styles.emptyMsgText}>{children}</Text>
@@ -18,7 +19,8 @@ export default function NoData({ children }: { children: string }) {
 const styles = StyleSheet.create({
 	emptyMsgWrapper: {
 		flex: 1,
-		backgroundColor: colors.brown,
+		backgroundColor: colors.light,
+		paddingTop: 10,
 	},
 	emptyMsgText: {
 		textAlign: "center",
