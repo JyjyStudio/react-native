@@ -6,7 +6,7 @@ import CustomSwitch from "./CustomSwitch"
 import globalStyle from "../constants/globalStyle"
 import colors from "../constants/colors"
 
-const Settings = ({ closeModal }: any) => {
+const Settings = ({ closeModal }: Props) => {
 	const dispatch = useTsDispatch()
 
 	const [isAnimals, setIsAnimals] = useState(true)
@@ -37,19 +37,19 @@ const Settings = ({ closeModal }: any) => {
 			<CustomSwitch
 				label="Animaux"
 				state={isAnimals}
-				handleSwitch={(newVal: any) => setIsAnimals(newVal)}
+				handleSwitch={(newVal: boolean) => setIsAnimals(newVal)}
 			/>
 
 			<CustomSwitch
 				label="Voyages"
 				state={isTravel}
-				handleSwitch={(newVal: any) => setIsTravel(newVal)}
+				handleSwitch={(newVal: boolean) => setIsTravel(newVal)}
 			/>
 
 			<CustomSwitch
 				label="Voitures"
 				state={isCars}
-				handleSwitch={(newVal: any) => setIsCars(newVal)}
+				handleSwitch={(newVal: boolean) => setIsCars(newVal)}
 			/>
 
 			{isAnimals === false && isTravel === false && isCars === false ? (
@@ -85,9 +85,13 @@ const styles = StyleSheet.create({
 	},
 	separator: {
 		borderWidth: 0.5,
-		borderColor: colors.ghost,
+		borderColor: colors.lightGrey,
 		marginVertical: 25,
 	},
 })
+
+type Props = {
+	closeModal: () => void
+}
 
 export default Settings

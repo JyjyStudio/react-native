@@ -4,7 +4,7 @@ import { InitialState, saved_settings, User } from "../constants"
 
 const initialState: InitialState = {
 	users: DATA,
-	selectedUsers: [],
+	likedUsers: [],
 	selectedCategories: DATA,
 }
 
@@ -13,10 +13,10 @@ const userSlice = createSlice({
 	initialState,
 	reducers: {
 		like: (state, action: PayloadAction<User>) => {
-			state.selectedUsers.push(action.payload)
+			state.likedUsers.push(action.payload)
 		},
 		unlike: (state, action: PayloadAction<string>) => {
-			state.selectedUsers = state.selectedUsers.filter(
+			state.likedUsers = state.likedUsers.filter(
 				(user) => JSON.parse(JSON.stringify(user)).id !== action.payload
 			)
 		},

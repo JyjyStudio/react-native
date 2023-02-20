@@ -1,7 +1,7 @@
 // Types
 export type InitialState = {
 	users: Users
-	selectedUsers: Users
+	likedUsers: Users
 	selectedCategories: Users
 }
 export type User = {

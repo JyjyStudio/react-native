@@ -1,28 +1,28 @@
 import React from "react"
 import { View, FlatList } from "react-native"
-import globalStyle from "../constants/globalStyle"
-import EmptyLikes from "../components/NoData"
 import { NavigationProps } from "../constants/globals"
 import { useTsSelector } from "../redux/hooks"
+import NoData from "../components/NoData"
 import LikedPictures from "../components/LikedPictures"
+import globalStyle from "../constants/globalStyle"
 
 export default function Likes({ navigation }: NavigationProps) {
-	const selectedUsers = useTsSelector((state) => state.users.selectedUsers)
+	const likedUsers = useTsSelector((state) => state.users.likedUsers)
 
 	return (
 		<View style={globalStyle.container}>
-			{selectedUsers?.length ? (
+			{likedUsers.length ? (
 				<FlatList
-					data={selectedUsers}
-					renderItem={(selectedUsers) => (
+					data={likedUsers}
+					renderItem={(likedUsers) => (
 						<LikedPictures
-							items={selectedUsers}
+							items={likedUsers}
 							navigation={navigation}
 						/>
 					)}
 				/>
 			) : (
-				<EmptyLikes>Aucune image à afficher</EmptyLikes>
+				<NoData>Aucune image à afficher</NoData>
 			)}
 		</View>
 	)

@@ -23,7 +23,7 @@ const Portfolio = ({ navigation }: Props) => {
 	const userId = navigation.getParam("id")
 
 	const already_liked = useTsSelector((state: RootState) =>
-		state.users.selectedUsers?.some((user) => user.id === userId)
+		state.users.likedUsers?.some((user) => user.id === userId)
 	)
 
 	const handleLike = useCallback(() => {

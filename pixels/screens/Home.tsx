@@ -10,6 +10,7 @@ import { MaterialIcons } from "@expo/vector-icons"
 import { HeaderButtons, Item } from "react-navigation-header-buttons"
 import globalStyle from "../constants/globalStyle"
 import colors from "../constants/colors"
+import NoData from "../components/NoData"
 
 export default function Home({ navigation }: NavigationProps) {
 	const [modalVisible, setModalVisible] = useState(false)
@@ -31,7 +32,8 @@ export default function Home({ navigation }: NavigationProps) {
 	useEffect(() => {
 		navigation.setParams({ handleModal: handleSettingsModal })
 	}, [])
-
+	if (!selectedCategories.length)
+		return <NoData>Pas d'utilisateur à afficher.</NoData>
 	return (
 		<View style={globalStyle.container}>
 			<Modal visible={modalVisible} animationType="slide">
