@@ -1,20 +1,38 @@
 import * as React from "react"
+import { createStackNavigator, StackNavigationOptions } from "@react-navigation/stack"
 import { NavigationContainer } from "@react-navigation/native"
-import { createStackNavigator } from "@react-navigation/stack"
+import { RootStackParamList } from "./constants/types"
 import Home from "./screens/Home"
-import Porfolio from "./screens/Portfolio"
+import Portfolio from "./screens/Portfolio"
 
-const Stack = createStackNavigator()
+const Stack = createStackNavigator<RootStackParamList>()
 
 function App() {
 	return (
 		<NavigationContainer>
-			<Stack.Navigator initialRouteName="Home">
-				<Stack.Screen name="Home" component={Home} />
-				<Stack.Screen name="Porfolio" component={Porfolio} />
+			<Stack.Navigator screenOptions={defaultScreenOptions}>
+				<Stack.Screen
+					name="Home"
+					component={Home}
+					options={{
+						title: "Accueil",
+					}}
+				/>
+				<Stack.Screen name="Portfolio" component={Portfolio} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	)
+}
+
+const defaultScreenOptions: StackNavigationOptions = {
+	headerStyle: {
+		backgroundColor: "#f4511e",
+	},
+	headerTitleAlign: "center",
+	headerTintColor: "#fff",
+	headerTitleStyle: {
+		fontWeight: "bold",
+	},
 }
 
 export default App
