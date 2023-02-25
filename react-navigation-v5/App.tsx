@@ -22,18 +22,15 @@ function App() {
 					options={{
 						title: "Accueil",
 						headerStyle: { backgroundColor: Colors.homeHeader },
-						headerTitleStyle: {
-							...(defaultScreenOptions.headerTitleStyle as {}),
-							color: Colors.light,
-						},
 					}}
 				/>
 				<Stack.Screen
 					name="Portfolio"
 					component={Portfolio}
-					options={{
-						headerStyle: { backgroundColor: Colors.light },
-					}}
+					options={({ route }) => ({
+						headerStyle: { backgroundColor: route.params.user.favColor },
+						headerTitle: `Portfolio de ${route.params.user.name}`,
+					})}
 				/>
 			</Stack.Navigator>
 		</NavigationContainer>
@@ -47,6 +44,7 @@ const defaultScreenOptions: StackNavigationOptions = {
 	headerTitleStyle: {
 		fontSize: 22,
 		fontWeight: "bold",
+		color: Colors.light,
 	},
 	headerTitleAlign: "center",
 	headerTintColor: "#000",

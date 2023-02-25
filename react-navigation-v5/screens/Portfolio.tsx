@@ -4,10 +4,10 @@ import { NavigationProps } from "../constants/types"
 import { Globalstyle } from "../constants/globalStyle"
 
 export default function Portfolio({ navigation, route }: NavigationProps) {
-	const user = route.params
+	const { user } = route.params
 	return (
 		<View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-			<Text style={Globalstyle.bodyTxt}>Profil de {user.userId}</Text>
+			<Text style={Globalstyle.bodyTxt}>Profil de {user.name}</Text>
 			<TouchableOpacity
 				style={{ ...Globalstyle.btn, backgroundColor: "lightgreen" }}
 				onPress={() => navigation.navigate("Home")}
