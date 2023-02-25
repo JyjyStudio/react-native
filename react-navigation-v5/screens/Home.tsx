@@ -5,13 +5,14 @@ import { NavigationProps } from "../constants/types"
 
 export default function Home({ navigation }: NavigationProps) {
 	const user = {
-		userId: "Toto",
-		name: "Toto",
+		userId: 1,
+		name: "Jyhad",
 		age: 24,
+		favColor: "royalblue",
 	}
 
 	const handlePress = () => {
-		navigation.navigate("Portfolio", user)
+		navigation.navigate("Portfolio", { user })
 	}
 
 	return (
