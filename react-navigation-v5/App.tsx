@@ -1,9 +1,14 @@
 import * as React from "react"
-import { createStackNavigator, StackNavigationOptions } from "@react-navigation/stack"
+import {
+	createStackNavigator,
+	StackNavigationOptions,
+	CardStyleInterpolators,
+} from "@react-navigation/stack"
 import { NavigationContainer } from "@react-navigation/native"
 import { RootStackParamList } from "./constants/types"
 import Home from "./screens/Home"
 import Portfolio from "./screens/Portfolio"
+import { Colors } from "./constants/colors"
 
 const Stack = createStackNavigator<RootStackParamList>()
 
@@ -16,9 +21,20 @@ function App() {
 					component={Home}
 					options={{
 						title: "Accueil",
+						headerStyle: { backgroundColor: Colors.homeHeader },
+						headerTitleStyle: {
+							...(defaultScreenOptions.headerTitleStyle as {}),
+							color: Colors.light,
+						},
 					}}
 				/>
-				<Stack.Screen name="Portfolio" component={Portfolio} />
+				<Stack.Screen
+					name="Portfolio"
+					component={Portfolio}
+					options={{
+						headerStyle: { backgroundColor: Colors.light },
+					}}
+				/>
 			</Stack.Navigator>
 		</NavigationContainer>
 	)
@@ -28,11 +44,15 @@ const defaultScreenOptions: StackNavigationOptions = {
 	headerStyle: {
 		backgroundColor: "#f4511e",
 	},
-	headerTitleAlign: "center",
-	headerTintColor: "#fff",
 	headerTitleStyle: {
+		fontSize: 22,
 		fontWeight: "bold",
 	},
+	headerTitleAlign: "center",
+	headerTintColor: "#000",
+	gestureEnabled: true,
+	gestureDirection: "horizontal",
+	cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
 }
 
 export default App
