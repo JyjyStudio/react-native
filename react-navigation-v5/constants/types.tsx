@@ -3,7 +3,14 @@ import { RouteProp } from "@react-navigation/native"
 
 export type RootStackParamList = {
 	Home: undefined //no params
-	Portfolio: { userId: string }
+	Portfolio: {
+		user: {
+			userId: number
+			name: string
+			age: number
+			favColor: string
+		}
+	}
 }
 
 export type ScreenNavigationProp = StackNavigationProp<RootStackParamList>
