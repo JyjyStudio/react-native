@@ -1,24 +1,29 @@
 import React from "react"
-import { Pressable, StyleSheet, Text, View } from "react-native"
+import { TouchableOpacity, StyleSheet, Text, View } from "react-native"
+import { Globalstyle } from "../constants/globalStyle"
 import { NavigationProps } from "../constants/types"
 
-export default function ({ navigation }: NavigationProps) {
+export default function Home({ navigation }: NavigationProps) {
+	const user = {
+		userId: "Toto",
+		name: "Toto",
+		age: 24,
+	}
+
 	const handlePress = () => {
-		navigation.navigate("Portfolio")
+		navigation.navigate("Portfolio", user)
 	}
 
 	return (
 		<View style={styles.container}>
-			<Text style={styles.text}>Home</Text>
-			<Pressable
-				style={({ pressed }) => ({
-					backgroundColor: pressed ? "lightseagreen" : "rebeccapurple",
-					...styles.pressable,
-				})}
+			<Text style={Globalstyle.bodyTxt}>Home</Text>
+			<TouchableOpacity
+				style={{ ...Globalstyle.btn, ...styles.btn }}
 				onPress={handlePress}
+				activeOpacity={0.7}
 			>
-				<Text style={styles.btn}>Vers Portfolio</Text>
-			</Pressable>
+				<Text style={Globalstyle.buttonTxt}>Vers Portfolio</Text>
+			</TouchableOpacity>
 		</View>
 	)
 }
@@ -30,17 +35,7 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 		alignItems: "center",
 	},
-	pressable: {
-		marginVertical: 15,
-		borderRadius: 15,
-	},
-	text: {
-		fontSize: 24,
-	},
 	btn: {
-		paddingVertical: 7,
-		paddingHorizontal: 16,
-		color: "white",
-		fontSize: 18,
+		backgroundColor: "lightseagreen",
 	},
 })
