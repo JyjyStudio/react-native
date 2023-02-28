@@ -12,7 +12,7 @@ import { Colors } from "./constants/colors"
 
 const Stack = createStackNavigator<RootStackParamList>()
 
-function App() {
+export default function App() {
 	return (
 		<NavigationContainer>
 			<Stack.Navigator screenOptions={defaultScreenOptions}>
@@ -52,6 +52,4 @@ const defaultScreenOptions: StackNavigationOptions = {
 	gestureDirection: "horizontal",
 	cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
 }
-
-export default App
 
