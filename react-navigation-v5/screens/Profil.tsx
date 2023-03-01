@@ -1,18 +1,34 @@
-import React, { useState, useLayoutEffect } from "react"
+import React, { useLayoutEffect, useReducer } from "react"
 import { Text, View, TouchableOpacity, StyleSheet } from "react-native"
-import { NavigationProps } from "../constants/types"
+import { NavigationProps } from "../routes/types"
 import { Globalstyle } from "../constants/globalStyle"
 import CounterBtn from "../components/CounterBtn"
 
-export default function Portfolio({ navigation, route }: NavigationProps) {
-	const [count, setCount] = useState(0)
+const ACTIONS = {
+	INCREMENT: "increment",
+	DECREMENT: "decrement",
+}
+
+const reducer = (state: { count: number }, action: string) => {
+	switch (action) {
+		case ACTIONS.INCREMENT:
+			return { count: state.count + 1 }
+		case ACTIONS.DECREMENT:
+			return { count: state.count - 1 }
+		default:
+			return state
+	}
+}
+
+export default function Profil({ navigation, route }: NavigationProps) {
+	const [state, dispatch] = useReducer(reducer, { count: 0 })
 
 	useLayoutEffect(() => {
 		navigation.setOptions({
 			headerRight: () => (
 				<CounterBtn
-					addOne={() => setCount((prevCount) => prevCount + 1)}
-					removeOne={() => setCount((prevCount) => prevCount - 1)}
+					increment={() => dispatch(ACTIONS.INCREMENT)}
+					decrement={() => dispatch(ACTIONS.DECREMENT)}
 				/>
 			),
 		})
@@ -20,7 +36,7 @@ export default function Portfolio({ navigation, route }: NavigationProps) {
 
 	return (
 		<View style={styles.container}>
-			<Text style={Globalstyle.bodyTxt}>Compteur: {count}</Text>
+			<Text style={Globalstyle.bodyTxt}>Compteur: {state.count}</Text>
 			<TouchableOpacity
 				style={{ ...Globalstyle.btn, backgroundColor: "lightgreen" }}
 				onPress={() => navigation.navigate("Home")}
