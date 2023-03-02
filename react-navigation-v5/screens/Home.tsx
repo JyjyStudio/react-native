@@ -1,7 +1,7 @@
 import React from "react"
 import { TouchableOpacity, StyleSheet, Text, View } from "react-native"
 import { Globalstyle } from "../constants/globalStyle"
-import { NavigationProps } from "../constants/types"
+import { NavigationProps } from "../routes/types"
 
 export default function Home({ navigation }: NavigationProps) {
 	const user = {
@@ -12,7 +12,7 @@ export default function Home({ navigation }: NavigationProps) {
 	}
 
 	const handlePress = () => {
-		navigation.navigate("Portfolio", { user })
+		navigation.navigate("Profil", { user })
 	}
 
 	return (
@@ -23,7 +23,7 @@ export default function Home({ navigation }: NavigationProps) {
 				onPress={handlePress}
 				activeOpacity={0.7}
 			>
-				<Text style={Globalstyle.buttonTxt}>Vers Portfolio</Text>
+				<Text style={Globalstyle.buttonTxt}>Vers Profil</Text>
 			</TouchableOpacity>
 		</View>
 	)

@@ -2,13 +2,13 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native"
 import React from "react"
 import { Colors } from "../constants/colors"
 
-export default function CounterBtn({ addOne, removeOne }) {
+export default function CounterBtn({ increment, decrement }) {
 	return (
 		<View style={styles.container}>
-			<TouchableOpacity onPress={addOne}>
+			<TouchableOpacity onPress={increment}>
 				<Text style={styles.btn}>+1</Text>
 			</TouchableOpacity>
-			<TouchableOpacity onPress={removeOne}>
+			<TouchableOpacity onPress={decrement}>
 				<Text style={styles.btn}>-1</Text>
 			</TouchableOpacity>
 		</View>
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
 		justifyContent: "space-evenly",
 	},
 	btn: {
-		color: Colors.light,
+		color: Colors.dark,
 		fontSize: 20,
 		fontWeight: "bold",
 	},
