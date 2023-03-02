@@ -1,5 +1,7 @@
 export const Colors = {
 	light: "white",
 	dark: "black",
-	homeHeader: "slateblue",
+	homeHeader: "#F6F8FA",
+	active: "deepskyblue",
+	inactive: "grey",
 }
