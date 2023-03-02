@@ -10,8 +10,8 @@
 	"name": "react-navigation-v5",
 	"dependencies": {
 		"@react-native-community/masked-view": "^0.1.11",
-		"@react-navigation/bottom-tabs": "^6.5.5",
-		"@react-navigation/drawer": "^6.6.0",
+		"@react-navigation/bottom-tabs": "^5.11.11",
+		"@react-navigation/drawer": "^5.12.5",
 		"@react-navigation/native": "^5.9.8",
 		"@react-navigation/stack": "^5.14.9",
 		"expo": "^47.0.0",
