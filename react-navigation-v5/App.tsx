@@ -1,55 +1,27 @@
-import * as React from "react"
-import {
-	createStackNavigator,
-	StackNavigationOptions,
-	CardStyleInterpolators,
-} from "@react-navigation/stack"
+import React from "react"
 import { NavigationContainer } from "@react-navigation/native"
-import { RootStackParamList } from "./constants/types"
-import Home from "./screens/Home"
-import Portfolio from "./screens/Portfolio"
-import { Colors } from "./constants/colors"
+import { createDrawerNavigator } from "@react-navigation/drawer"
+import CustomDrawerContent from "./components/CustomDrawerContent"
+import BottomTabNav from "./routes/BottomTabNav"
+import { useWindowDimensions } from "react-native"
 
-const Stack = createStackNavigator<RootStackParamList>()
+const Drawer = createDrawerNavigator()
 
 export default function App() {
+	const dimensions = useWindowDimensions()
+	const isLargeScreen = dimensions.width >= 768
 	return (
 		<NavigationContainer>
-			<Stack.Navigator screenOptions={defaultScreenOptions}>
-				<Stack.Screen
-					name="Home"
-					component={Home}
-					options={{
-						title: "Accueil",
-						headerStyle: { backgroundColor: Colors.homeHeader },
-					}}
-				/>
-				<Stack.Screen
-					name="Portfolio"
-					component={Portfolio}
-					options={({ route }) => ({
-						headerStyle: { backgroundColor: route.params.user.favColor },
-						headerTitle: `Portfolio de ${route.params.user.name}`,
-					})}
-				/>
-			</Stack.Navigator>
+			<Drawer.Navigator
+				drawerContent={(props) => <CustomDrawerContent {...props} />}
+				drawerType={isLargeScreen ? "permanent" : "front"}
+				drawerStyle={isLargeScreen ? null : { width: "70%" }}
+				edgeWidth={100}
+				overlayColor="transparent"
+			>
+				<Drawer.Screen name="Home" component={BottomTabNav} />
+			</Drawer.Navigator>
 		</NavigationContainer>
 	)
-}
-
-const defaultScreenOptions: StackNavigationOptions = {
-	headerStyle: {
-		backgroundColor: "#f4511e",
-	},
-	headerTitleStyle: {
-		fontSize: 22,
-		fontWeight: "bold",
-		color: Colors.light,
-	},
-	headerTitleAlign: "center",
-	headerTintColor: "#000",
-	gestureEnabled: true,
-	gestureDirection: "horizontal",
-	cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
 }
 
