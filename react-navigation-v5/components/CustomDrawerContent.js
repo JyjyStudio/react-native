@@ -1,5 +1,5 @@
+import React, { useContext } from "react"
 import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer"
-import React, { useState } from "react"
 import { StyleSheet, View } from "react-native"
 import {
 	Text,
@@ -12,9 +12,10 @@ import {
 	Switch,
 } from "react-native-paper"
 import { MaterialIcons } from "@expo/vector-icons"
+import { ThemeContext } from "../context/ThemeContext"
 
 export default function CustomDrawerContent(props) {
-	const [isDark, setIsDark] = useState(false)
+	const { isDark, setIsDark } = useContext(ThemeContext)
 
 	const toggleDarkTheme = () => {
 		setIsDark(!isDark)
@@ -101,7 +102,7 @@ export default function CustomDrawerContent(props) {
 							onPress={() => props.navigation.navigate("Settings")}
 						/>
 
-						<TouchableRipple onPress={() => toggleDarkTheme()}>
+						<TouchableRipple onPress={toggleDarkTheme}>
 							<View style={styles.settings}>
 								<Text>Mode sombre</Text>
 								<View pointerEvents="none">
