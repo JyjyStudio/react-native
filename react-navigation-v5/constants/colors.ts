@@ -1,7 +1,9 @@
 export const Colors = {
 	light: "white",
 	dark: "black",
-	homeHeader: "#F6F8FA",
-	active: "deepskyblue",
+	lightHomeHeader: "#F6F8FA",
+	darkHomeHeader: "#2c3e50",
+	active: "orange",
 	inactive: "grey",
+	tabBarBadge: "#ff7979",
 }
