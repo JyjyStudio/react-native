@@ -1,6 +1,6 @@
 import React from "react"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
-import DrawerStackNav from "./HomeStackNav"
+import HomeStackNav from "./HomeStackNav"
 import Settings from "../screens/Settings"
 import { MaterialIcons } from "@expo/vector-icons"
 import { Colors } from "../constants/colors"
@@ -15,10 +15,10 @@ export default function BottomTabNav() {
 					let iconName = null
 					if (route.name === "Home") {
 						iconName = "home"
-						size = focused ? 30 : 25
+						size = focused ? 35 : 30
 					} else if (route.name === "Settings") {
 						iconName = "settings"
-						size = focused ? 30 : 25
+						size = focused ? 35 : 30
 					}
 					return <MaterialIcons name={iconName} size={size} color={color} />
 				},
@@ -27,17 +27,22 @@ export default function BottomTabNav() {
 				showLabel: false,
 				activeTintColor: Colors.active,
 				inactiveTintColor: Colors.inactive,
+				tabStyle: { height: 65 },
+				style: { height: 60 },
 			}}
 		>
 			<Tab.Screen
 				name="Home"
-				component={DrawerStackNav}
+				component={HomeStackNav}
 				options={{
-					title: "Accueil BottomTabNav",
-					tabBarBadge: 8,
+					tabBarBadge: 1,
+					tabBarBadgeStyle: {
+						fontSize: 12,
+						backgroundColor: Colors.tabBarBadge,
+					},
 				}}
 			/>
-			<Tab.Screen name="Settings" component={Settings} />
+			<Tab.Screen name="Settings" component={Settings} options={{ title: "Réglages" }} />
 		</Tab.Navigator>
 	)
 }
