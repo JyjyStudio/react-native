@@ -1,8 +1,8 @@
-import { StackNavigationProp } from "@react-navigation/stack"
 import { RouteProp } from "@react-navigation/native"
+import { DrawerNavigationProp } from "@react-navigation/drawer"
 
 export type RootStackParamList = {
-	Home: { isDark: undefined }
+	Home: undefined //no params
 	Profil: {
 		user: {
 			userId: number
@@ -11,7 +11,7 @@ export type RootStackParamList = {
 			favColor: string
 		}
 	}
-	Listes: undefined //no params
+	Listes: undefined
 	Sujets: undefined
 	Signets: undefined
 	Moments: undefined
@@ -19,9 +19,9 @@ export type RootStackParamList = {
 }
 
 export type HomeScreenRouteProp = RouteProp<RootStackParamList, "Home">
-export type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, "Home">
+export type HomeScreenNavigationProp = DrawerNavigationProp<RootStackParamList, "Home">
 
-export type HomeNavigationProps = {
+export type NavigationProps = {
 	route?: HomeScreenRouteProp
 	navigation?: HomeScreenNavigationProp
 }

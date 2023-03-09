@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
 import { CardStyleInterpolators, createStackNavigator } from "@react-navigation/stack"
-import { HomeNavigationProps, RootStackParamList } from "./types"
+import { NavigationProps, RootStackParamList } from "./types"
 import { MaterialIcons } from "@expo/vector-icons"
 import { ThemeContext } from "../context/ThemeProvider"
 import Home from "../screens/Home"
@@ -14,7 +14,7 @@ import BottomTabNav from "./BottomTabNav"
 
 const HomeStack = createStackNavigator<RootStackParamList>()
 
-export default function HomeStackNav({ navigation }: HomeNavigationProps) {
+export default function HomeStackNav({ navigation }: NavigationProps) {
 	const { colors } = useContext(ThemeContext)
 
 	return (
