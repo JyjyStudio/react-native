@@ -139,7 +139,9 @@ export default function CustomDrawerContent(props) {
 
 						<TouchableRipple onPress={toggleDarkTheme}>
 							<View style={styles.settings}>
-								<Text style={{ color: colors.primary }}>Mode sombre</Text>
+								<Text style={{ color: colors.primary, fontSize: 16 }}>
+									Mode sombre
+								</Text>
 								<View pointerEvents="none">
 									<Switch value={isDark} />
 								</View>
@@ -151,6 +153,7 @@ export default function CustomDrawerContent(props) {
 
 			<Drawer.Section style={styles.logOutSection}>
 				<DrawerItem
+					inactiveTintColor={colors.primary}
 					label="Déconnexion"
 					icon={({ color, size }) => (
 						<MaterialIcons name="logout" size={size} color={colors.primary} />
@@ -205,6 +208,7 @@ const styles = StyleSheet.create({
 	settings: {
 		flexDirection: "row",
 		justifyContent: "space-between",
+		alignItems: "center",
 		paddingTop: 10,
 		paddingHorizontal: 15,
 	},
