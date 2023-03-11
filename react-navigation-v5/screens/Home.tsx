@@ -1,9 +1,9 @@
 import React from "react"
 import { TouchableOpacity, StyleSheet, Text, View } from "react-native"
 import { Globalstyle } from "../constants/globalStyle"
-import { NavigationProps } from "../routes/types"
+import { HomeNavigationProps } from "../routes/types"
 
-export default function Home({ navigation }: NavigationProps) {
+export default function Home({ navigation }: HomeNavigationProps) {
 	const user = {
 		userId: 1,
 		name: "Jyhad",

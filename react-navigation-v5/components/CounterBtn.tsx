@@ -1,8 +1,22 @@
+import React, { useContext } from "react"
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native"
-import React from "react"
-import { Colors } from "../constants/colors"
+import { ThemeContext } from "../context/ThemeProvider"
 
 export default function CounterBtn({ increment, decrement }) {
+	const { colors } = useContext(ThemeContext)
+	const styles = StyleSheet.create({
+		container: {
+			flexDirection: "row",
+			width: 90,
+			justifyContent: "space-evenly",
+		},
+		btn: {
+			color: colors.primary,
+			fontSize: 20,
+			fontWeight: "bold",
+		},
+	})
+
 	return (
 		<View style={styles.container}>
 			<TouchableOpacity onPress={increment}>
@@ -14,16 +28,3 @@ export default function CounterBtn({ increment, decrement }) {
 		</View>
 	)
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flexDirection: "row",
-		width: 90,
-		justifyContent: "space-evenly",
-	},
-	btn: {
-		color: Colors.dark,
-		fontSize: 20,
-		fontWeight: "bold",
-	},
-})

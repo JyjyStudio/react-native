@@ -1,8 +1,9 @@
-import React, { useLayoutEffect, useReducer } from "react"
+import React, { useContext, useLayoutEffect, useReducer } from "react"
 import { Text, View, TouchableOpacity, StyleSheet } from "react-native"
-import { NavigationProps } from "../routes/types"
+import { HomeNavigationProps } from "../routes/types"
 import { Globalstyle } from "../constants/globalStyle"
 import CounterBtn from "../components/CounterBtn"
+import { ThemeContext } from "../context/ThemeProvider"
 
 const ACTIONS = {
 	INCREMENT: "increment",
@@ -20,8 +21,9 @@ const reducer = (state: { count: number }, action: string) => {
 	}
 }
 
-export default function Profil({ navigation, route }: NavigationProps) {
+export default function Profil({ navigation, route }: HomeNavigationProps) {
 	const [state, dispatch] = useReducer(reducer, { count: 0 })
+	const { colors } = useContext(ThemeContext)
 
 	useLayoutEffect(() => {
 		navigation.setOptions({
@@ -42,7 +44,7 @@ export default function Profil({ navigation, route }: NavigationProps) {
 				onPress={() => navigation.navigate("Home")}
 				activeOpacity={0.7}
 			>
-				<Text style={{ ...Globalstyle.buttonTxt, color: "black" }}>
+				<Text style={{ ...Globalstyle.buttonTxt, color: colors.primary }}>
 					Retourner vers Home
 				</Text>
 			</TouchableOpacity>

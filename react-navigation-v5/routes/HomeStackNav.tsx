@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 import { CardStyleInterpolators, createStackNavigator } from "@react-navigation/stack"
 import { HomeNavigationProps, RootStackParamList } from "./types"
 import { MaterialIcons } from "@expo/vector-icons"
-import { ThemeContext } from "../context/ThemeContext"
+import { ThemeContext } from "../context/ThemeProvider"
 import Home from "../screens/Home"
 import Profil from "../screens/Profil"
 import Listes from "../screens/Listes"
@@ -11,22 +11,21 @@ import Signets from "../screens/Signets"
 import Moments from "../screens/Moments"
 import Settings from "../screens/Settings"
 import BottomTabNav from "./BottomTabNav"
-import { Colors } from "../constants/colors"
 
 const HomeStack = createStackNavigator<RootStackParamList>()
 
 export default function HomeStackNav({ navigation }: HomeNavigationProps) {
-	const { isDark } = useContext(ThemeContext)
+	const { colors } = useContext(ThemeContext)
 
 	return (
 		<HomeStack.Navigator
 			screenOptions={{
 				headerStyle: {
-					backgroundColor: isDark ? Colors.darkHomeHeader : Colors.lightHomeHeader,
+					backgroundColor: colors.background,
 				},
 				headerTitleStyle: {
 					fontSize: 22,
-					color: Colors.dark,
+					color: colors.primary,
 				},
 				headerTitleAlign: "center",
 				gestureEnabled: true,

@@ -4,7 +4,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer"
 import CustomDrawerContent from "./components/CustomDrawerContent"
 import BottomTabNav from "./routes/BottomTabNav"
 import { useWindowDimensions } from "react-native"
-import { ThemeContextProvider } from "./context/ThemeContext"
+import { ThemeProvider } from "./context/ThemeProvider"
 
 const Drawer = createDrawerNavigator()
 
@@ -12,7 +12,7 @@ export default function App() {
 	const dimensions = useWindowDimensions()
 	const isLargeScreen = dimensions.width >= 768
 	return (
-		<ThemeContextProvider>
+		<ThemeProvider>
 			<NavigationContainer>
 				<Drawer.Navigator
 					drawerContent={(props) => <CustomDrawerContent {...props} />}
@@ -24,7 +24,7 @@ export default function App() {
 					<Drawer.Screen name="Home" component={BottomTabNav} />
 				</Drawer.Navigator>
 			</NavigationContainer>
-		</ThemeContextProvider>
+		</ThemeProvider>
 	)
 }
 

@@ -1,4 +1,4 @@
-import { Colors } from "./colors"
+import { darkColors } from "./colors"
 
 export const Globalstyle = {
 	btn: {
@@ -9,7 +9,7 @@ export const Globalstyle = {
 	},
 	buttonTxt: {
 		fontSize: 18,
-		color: Colors.light,
+		color: darkColors.primary,
 	},
 	bodyTxt: {
 		fontSize: 20,
