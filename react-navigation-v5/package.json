@@ -9,6 +9,7 @@
 	"private": true,
 	"name": "react-navigation-v5",
 	"dependencies": {
+		"@expo-google-fonts/montserrat": "^0.2.3",
 		"@react-native-community/masked-view": "^0.1.11",
 		"@react-navigation/bottom-tabs": "^5.11.11",
 		"@react-navigation/drawer": "^5.12.5",

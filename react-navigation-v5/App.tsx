@@ -1,16 +1,33 @@
-import React from "react"
+import React, { useEffect, useState, useCallback } from "react"
 import { NavigationContainer } from "@react-navigation/native"
 import { createDrawerNavigator } from "@react-navigation/drawer"
 import CustomDrawerContent from "./components/CustomDrawerContent"
 import BottomTabNav from "./routes/BottomTabNav"
 import { useWindowDimensions } from "react-native"
 import { ThemeProvider } from "./context/ThemeProvider"
+import {
+	useFonts,
+	Montserrat_300Light,
+	Montserrat_400Regular,
+	Montserrat_500Medium,
+	Montserrat_700Bold,
+} from "@expo-google-fonts/montserrat"
 
 const Drawer = createDrawerNavigator()
 
 export default function App() {
 	const dimensions = useWindowDimensions()
 	const isLargeScreen = dimensions.width >= 768
+	let [fontsLoaded] = useFonts({
+		Montserrat_300Light,
+		Montserrat_400Regular,
+		Montserrat_500Medium,
+		Montserrat_700Bold,
+	})
+
+	if (!fontsLoaded) {
+		return null
+	}
 	return (
 		<ThemeProvider>
 			<NavigationContainer>
