@@ -22,145 +22,157 @@ export default function CustomDrawerContent(props) {
 	}
 
 	return (
-		<View style={[styles.container, { backgroundColor: colors.background }]}>
-			<DrawerContentScrollView {...props}>
-				<View style={styles.drawerContentContainer}>
-					<View style={styles.userInfoContainer}>
-						<View style={styles.userInfoDetails}>
-							<Avatar.Image
-								source={{
-									uri: "https://avatars.githubusercontent.com/u/75069243?v=4",
-								}}
-								size={90}
-							/>
-							<View style={styles.name}>
-								<Title style={[styles.title, { color: colors.primary }]}>
-									Jyjystudio
-								</Title>
-								<Caption style={[styles.caption, , { color: colors.primary }]}>
-									@Jyjystudio
-								</Caption>
-							</View>
-						</View>
-
-						<View style={styles.followers}>
-							<View style={styles.section}>
-								<Paragraph
-									style={[
-										styles.paragraph,
-										styles.section,
-										{ color: colors.primary },
-									]}
-								>
-									24
-								</Paragraph>
-								<Caption style={[styles.caption, { color: colors.primary }]}>
-									Abonnements
-								</Caption>
-							</View>
-							<View style={styles.section}>
-								<Paragraph
-									style={[
-										styles.paragraph,
-										styles.section,
-										{ color: colors.primary },
-									]}
-								>
-									48
-								</Paragraph>
-								<Caption style={[styles.caption, { color: colors.primary }]}>
-									Abonnés
-								</Caption>
-							</View>
+		<View style={[styles.container, { backgroundColor: colors.navigationBackground }]}>
+			{/* <DrawerContentScrollView {...props}> */}
+			<View style={styles.drawerContentContainer}>
+				<View style={styles.userInfoContainer}>
+					<View style={styles.userInfoDetails}>
+						<Avatar.Image
+							source={{
+								uri: "https://avatars.githubusercontent.com/u/75069243?v=4",
+							}}
+							size={90}
+						/>
+						<View style={styles.name}>
+							<Title style={[styles.title, { color: colors.primary }]}>
+								Jyjystudio
+							</Title>
+							<Caption style={[styles.caption, , { color: colors.primary }]}>
+								@Jyjystudio
+							</Caption>
 						</View>
 					</View>
 
-					<View style={styles.drawerSection}>
-						<DrawerItem
-							// activeTintColor={colors.primary}
-							inactiveTintColor={colors.primary}
-							label="Profil"
-							icon={({ color, size }) => (
-								<MaterialIcons name="face" size={size} color={colors.primary} />
-							)}
-							onPress={() => props.navigation.navigate("Profil")}
-						/>
-
-						<DrawerItem
-							inactiveTintColor={colors.primary}
-							label="Listes"
-							icon={({ color, size }) => (
-								<MaterialIcons name="list-alt" size={size} color={colors.primary} />
-							)}
-							onPress={() => props.navigation.navigate("Listes")}
-						/>
-
-						<DrawerItem
-							inactiveTintColor={colors.primary}
-							label="Sujets"
-							icon={({ color, size }) => (
-								<MaterialIcons name="comment" size={size} color={colors.primary} />
-							)}
-							onPress={() => props.navigation.navigate("Sujets")}
-						/>
-
-						<DrawerItem
-							inactiveTintColor={colors.primary}
-							label="Signets"
-							icon={({ color, size }) => (
-								<MaterialIcons
-									name="bookmark-border"
-									size={size}
-									color={colors.primary}
-								/>
-							)}
-							onPress={() => props.navigation.navigate("Signets")}
-						/>
-
-						<DrawerItem
-							inactiveTintColor={colors.primary}
-							label="Moments"
-							icon={({ color, size }) => (
-								<MaterialIcons name="flash-on" size={size} color={colors.primary} />
-							)}
-							onPress={() => props.navigation.navigate("Moments")}
-						/>
-					</View>
-
-					<View style={styles.drawerSection}>
-						<DrawerItem
-							inactiveTintColor={colors.primary}
-							label="Paramètres"
-							icon={({ color, size }) => (
-								<MaterialIcons name="settings" size={size} color={colors.primary} />
-							)}
-							onPress={() => props.navigation.navigate("Settings")}
-						/>
-
-						<TouchableRipple onPress={toggleDarkTheme}>
-							<View style={styles.settings}>
-								<Text style={{ color: colors.primary, fontSize: 16 }}>
-									Mode sombre
-								</Text>
-								<View pointerEvents="none">
-									<Switch value={isDark} />
-								</View>
-							</View>
-						</TouchableRipple>
+					<View style={styles.followers}>
+						<View style={styles.section}>
+							<Paragraph
+								style={[
+									styles.paragraph,
+									styles.section,
+									{ color: colors.primary },
+								]}
+							>
+								24
+							</Paragraph>
+							<Caption style={[styles.caption, { color: colors.primary }]}>
+								Abonnements
+							</Caption>
+						</View>
+						<View style={styles.section}>
+							<Paragraph
+								style={[
+									styles.paragraph,
+									styles.section,
+									{ color: colors.primary },
+								]}
+							>
+								48
+							</Paragraph>
+							<Caption style={[styles.caption, { color: colors.primary }]}>
+								Abonnés
+							</Caption>
+						</View>
 					</View>
 				</View>
-			</DrawerContentScrollView>
 
-			<Drawer.Section style={styles.logOutSection}>
-				<DrawerItem
-					inactiveTintColor={colors.primary}
-					label="Déconnexion"
-					icon={({ color, size }) => (
-						<MaterialIcons name="logout" size={size} color={colors.primary} />
-					)}
-					onPress={() => alert("Vous êtes déconnecté.")}
-				/>
-			</Drawer.Section>
+				<View style={styles.drawerSection}>
+					<DrawerItem
+						labelStyle={styles.labels}
+						// activeTintColor={colors.primary}
+						inactiveTintColor={colors.primary}
+						label="Profil"
+						icon={({ color, size }) => (
+							<MaterialIcons name="face" size={size} color={colors.primary} />
+						)}
+						onPress={() => props.navigation.navigate("Profil")}
+					/>
+
+					<DrawerItem
+						labelStyle={styles.labels}
+						inactiveTintColor={colors.primary}
+						label="Listes"
+						icon={({ color, size }) => (
+							<MaterialIcons name="list-alt" size={size} color={colors.primary} />
+						)}
+						onPress={() => props.navigation.navigate("Listes")}
+					/>
+
+					<DrawerItem
+						labelStyle={styles.labels}
+						inactiveTintColor={colors.primary}
+						label="Sujets"
+						icon={({ color, size }) => (
+							<MaterialIcons name="comment" size={size} color={colors.primary} />
+						)}
+						onPress={() => props.navigation.navigate("Sujets")}
+					/>
+
+					<DrawerItem
+						labelStyle={styles.labels}
+						inactiveTintColor={colors.primary}
+						label="Signets"
+						icon={({ color, size }) => (
+							<MaterialIcons
+								name="bookmark-border"
+								size={size}
+								color={colors.primary}
+							/>
+						)}
+						onPress={() => props.navigation.navigate("Signets")}
+					/>
+
+					<DrawerItem
+						labelStyle={styles.labels}
+						inactiveTintColor={colors.primary}
+						label="Moments"
+						icon={({ color, size }) => (
+							<MaterialIcons name="flash-on" size={size} color={colors.primary} />
+						)}
+						onPress={() => props.navigation.navigate("Moments")}
+					/>
+				</View>
+
+				<View style={styles.drawerSection}>
+					<DrawerItem
+						labelStyle={styles.labels}
+						inactiveTintColor={colors.primary}
+						label="Paramètres"
+						icon={({ color, size }) => (
+							<MaterialIcons name="settings" size={size} color={colors.primary} />
+						)}
+						onPress={() => props.navigation.navigate("Settings")}
+					/>
+
+					<TouchableRipple onPress={toggleDarkTheme}>
+						<View style={styles.settings}>
+							<Text
+								style={{
+									color: colors.primary,
+									fontSize: 16,
+									fontFamily: "Montserrat_400Regular",
+								}}
+							>
+								Mode sombre
+							</Text>
+							<View pointerEvents="none">
+								<Switch value={isDark} />
+							</View>
+						</View>
+					</TouchableRipple>
+				</View>
+				<View style={styles.drawerSection}>
+					<DrawerItem
+						labelStyle={styles.labels}
+						inactiveTintColor={colors.primary}
+						label="Déconnexion"
+						icon={({ color, size }) => (
+							<MaterialIcons name="logout" size={size} color={colors.primary} />
+						)}
+						onPress={() => alert("Vous êtes déconnecté.")}
+					/>
+				</View>
+			</View>
+			{/* </DrawerContentScrollView> */}
 		</View>
 	)
 }
@@ -171,9 +183,13 @@ const styles = StyleSheet.create({
 		borderRightWidth: 1,
 		borderRightColor: "black",
 	},
-	drawerContentContainer: { flex: 1 },
+	drawerContentContainer: {
+		flex: 1,
+		justifyContent: "space-between",
+	},
 	userInfoContainer: {
 		alignItems: "center",
+		marginTop: 30,
 	},
 	userInfoDetails: { marginTop: 15 },
 	name: {
@@ -181,20 +197,21 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 	},
 	title: {
-		fontSize: 19,
-		color: "blue",
-		marginTop: 5,
-		fontWeight: "bold",
+		fontSize: 20,
+		marginTop: 10,
+		fontFamily: "Montserrat_700Bold",
+		// fontWeight: "bold",
 	},
-	caption: { fontSize: 15 },
+	caption: {
+		fontSize: 14,
+		fontFamily: "Montserrat_500Medium",
+	},
 	followers: {
 		marginTop: 20,
 		flexDirection: "row",
-		alignItems: "center",
 	},
 	section: {
 		flexDirection: "row",
-		alignItems: "center",
 		marginRight: 9,
 	},
 	paragraph: {
@@ -209,12 +226,10 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		justifyContent: "space-between",
 		alignItems: "center",
-		paddingTop: 10,
 		paddingHorizontal: 15,
 	},
-	logOutSection: {
-		marginBottom: 5,
-		borderTopWidth: 0.5,
-		borderTopColor: "#ccc",
+	labels: {
+		fontSize: 17,
+		fontFamily: "Montserrat_400Regular",
 	},
 })

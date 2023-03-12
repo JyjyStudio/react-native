@@ -1,10 +1,12 @@
-import React from "react"
+import React, { useContext } from "react"
 import { StyleSheet, Text, View } from "react-native"
+import { ThemeContext } from "../context/ThemeProvider"
 
 const Signets = () => {
+	const { colors } = useContext(ThemeContext)
 	return (
-		<View style={styles.container}>
-			<Text style={styles.text}>Signets</Text>
+		<View style={[styles.container, { backgroundColor: colors.background }]}>
+			<Text style={[styles.text, { color: colors.primary }]}>Signets</Text>
 		</View>
 	)
 }

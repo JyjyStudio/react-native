@@ -1,9 +1,9 @@
 import React, { useContext } from "react"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import HomeStackNav from "./HomeStackNav"
-import Settings from "../screens/Settings"
-import { MaterialIcons } from "@expo/vector-icons"
 import { ThemeContext } from "../context/ThemeProvider"
+import { MaterialIcons } from "@expo/vector-icons"
+import Settings from "../screens/Settings"
 
 const Tab = createBottomTabNavigator()
 
@@ -14,13 +14,12 @@ export default function BottomTabNav() {
 		<Tab.Navigator
 			screenOptions={({ route }) => ({
 				tabBarIcon: ({ focused, color, size }) => {
+					size = focused ? 35 : 30
 					let iconName = null
 					if (route.name === "Home") {
 						iconName = "home"
-						size = focused ? 35 : 30
 					} else if (route.name === "Settings") {
 						iconName = "settings"
-						size = focused ? 35 : 30
 					}
 					return <MaterialIcons name={iconName} size={size} color={color} />
 				},
@@ -30,14 +29,14 @@ export default function BottomTabNav() {
 				activeTintColor: colors.active,
 				inactiveTintColor: colors.inactive,
 				tabStyle: { height: 65 },
-				style: { height: 60, backgroundColor: colors.background },
+				style: { height: 65, backgroundColor: colors.navigationBackground },
 			}}
 		>
 			<Tab.Screen
 				name="Home"
 				component={HomeStackNav}
 				options={{
-					tabBarBadge: 1,
+					tabBarBadge: 3,
 					tabBarBadgeStyle: {
 						fontSize: 12,
 						backgroundColor: colors.tabBarBadge,

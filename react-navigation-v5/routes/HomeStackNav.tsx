@@ -21,7 +21,7 @@ export default function HomeStackNav({ navigation }: NavigationProps) {
 		<HomeStack.Navigator
 			screenOptions={{
 				headerStyle: {
-					backgroundColor: colors.background,
+					backgroundColor: colors.navigationBackground,
 				},
 				headerTitleStyle: {
 					fontSize: 22,

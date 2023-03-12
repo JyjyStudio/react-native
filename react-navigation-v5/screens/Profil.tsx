@@ -1,6 +1,6 @@
 import React, { useContext, useLayoutEffect, useReducer } from "react"
 import { Text, View, TouchableOpacity, StyleSheet } from "react-native"
-import { HomeNavigationProps } from "../routes/types"
+import { NavigationProps } from "../routes/types"
 import { Globalstyle } from "../constants/globalStyle"
 import CounterBtn from "../components/CounterBtn"
 import { ThemeContext } from "../context/ThemeProvider"
@@ -21,7 +21,7 @@ const reducer = (state: { count: number }, action: string) => {
 	}
 }
 
-export default function Profil({ navigation, route }: HomeNavigationProps) {
+export default function Profil({ navigation, route }: NavigationProps) {
 	const [state, dispatch] = useReducer(reducer, { count: 0 })
 	const { colors } = useContext(ThemeContext)
 
@@ -37,8 +37,10 @@ export default function Profil({ navigation, route }: HomeNavigationProps) {
 	}, [navigation])
 
 	return (
-		<View style={styles.container}>
-			<Text style={Globalstyle.bodyTxt}>Compteur: {state.count}</Text>
+		<View style={[styles.container, { backgroundColor: colors.background }]}>
+			<Text style={[Globalstyle.bodyTxt, { color: colors.primary }]}>
+				Compteur: {state.count}
+			</Text>
 			<TouchableOpacity
 				style={{ ...Globalstyle.btn, backgroundColor: "lightgreen" }}
 				onPress={() => navigation.navigate("Home")}

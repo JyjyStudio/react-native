@@ -1,10 +1,12 @@
-import React from "react"
+import React, { useContext } from "react"
 import { StyleSheet, Text, View } from "react-native"
+import { ThemeContext } from "../context/ThemeProvider"
 
 const Moments = () => {
+	const { colors } = useContext(ThemeContext)
 	return (
-		<View style={styles.container}>
-			<Text style={styles.text}>Moments</Text>
+		<View style={[styles.container, { backgroundColor: colors.background }]}>
+			<Text style={[styles.text, { color: colors.primary }]}>Moments</Text>
 		</View>
 	)
 }
