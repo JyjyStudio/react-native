@@ -1,6 +1,12 @@
-import Home from "./screens/Home"
+import { NavigationContainer } from "@react-navigation/native"
+import { MainStackNavigator } from "./navigation/StackNavigator"
 
-export default function App() {
-	return <Home />
+const App = () => {
+	return (
+		<NavigationContainer>
+			<MainStackNavigator />
+		</NavigationContainer>
+	)
 }
 
+export default App

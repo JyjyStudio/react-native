@@ -1,7 +1,9 @@
 export const lightColors = {
 	primary: "#1F1B24",
-	navigationBackground: "#F6F8FA",
+	navigationBackground: "#9AC4F8",
+	navigationText: "black",
 	background: "white",
+	text: "black",
 	active: "orange",
 	inactive: "grey",
 	tabBarBadge: "#FF7979",
@@ -10,6 +12,7 @@ export const lightColors = {
 export const darkColors = {
 	primary: "white",
 	navigationBackground: "#949494",
+	navigationText: "white",
 	background: "#202124",
 	active: "white",
 	inactive: "lightgray",

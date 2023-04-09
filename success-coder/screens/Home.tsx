@@ -1,9 +1,17 @@
 import React from "react"
-import { Image, ScrollView, StyleSheet, Text, View } from "react-native"
+import { Image, ScrollView, StyleSheet, Text, View, TouchableOpacity } from "react-native"
 import { COURSES } from "../data/mockedData"
-export default function Home() {
+
+export default function Home({ navigation }) {
 	return (
 		<View style={styles.container}>
+			<TouchableOpacity
+				onPress={() => navigation.navigate("About")}
+				style={styles.btn}
+				activeOpacity={0.7}
+			>
+				<Text style={styles.textBtn}>go to about page</Text>
+			</TouchableOpacity>
 			<ScrollView>
 				{COURSES.map((course) => (
 					<View key={course.id} style={styles.courseContainer}>
@@ -23,12 +31,12 @@ export default function Home() {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		width: "100%",
-		marginTop: 40,
+		marginHorizontal: 10,
+		marginTop: 10,
 	},
 	courseContainer: {
 		backgroundColor: "lightgray",
-		margin: 10,
+		marginVertical: 10,
 	},
 	image: {
 		height: 150,
@@ -46,5 +54,14 @@ const styles = StyleSheet.create({
 		marginTop: 7,
 		alignSelf: "flex-end",
 		fontWeight: "bold",
+	},
+	btn: {
+		width: "100%",
+		backgroundColor: "lightblue",
+		padding: 5,
+	},
+	textBtn: {
+		textAlign: "center",
+		fontSize: 18,
 	},
 })
